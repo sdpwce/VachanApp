@@ -38,17 +38,6 @@ class _SignInScreenState extends State<SignUpScreen>{
                         child: Image.asset('images/half cloud.png')),
                   ],
                 ),
-                // SizedBox(
-                //   height: MediaQuery.of(context).size.height*0.05,
-                // ),
-                // Row(
-                //   children: [
-                //     Container(
-                //         height: Cheight*0.3,
-                //         width: Cwidgth*0.4,
-                //         child: Image.asset('images/autumn.png')),
-                //   ],
-                // ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [

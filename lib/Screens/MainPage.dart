@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vachanapp/utils/color_utils.dart';
 import 'package:vachanapp/widgets/AppBar.dart';
-import 'package:vachanapp/widgets/Heading.dart';
-import 'package:vachanapp/widgets/Images.dart';
-import 'package:vachanapp/widgets/Images2.dart';
-import 'package:vachanapp/widgets/WhiteHeading.dart';
-import 'package:vachanapp/Screens/read.dart';
-
+import 'package:vachanapp/widgets/Window.dart';
 
 class MainPage extends StatefulWidget{
 
@@ -21,7 +16,7 @@ class _MainScreen extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    var Cwidgth = MediaQuery.of(context).size.height*0.38;
+    var Cwidgth = MediaQuery.of(context).size.width*0.38;
     var Cheight = MediaQuery.of(context).size.height*0.38;
     var cwidgth = MediaQuery.of(context).size.width*0.45;
     return MaterialApp(
@@ -29,6 +24,7 @@ class _MainScreen extends State<MainPage> {
         appBar: Appbar(),
         floatingActionButton: FloatingActionButton(
           backgroundColor: const Color.fromARGB(255, 248, 134, 187),
+
           onPressed: () {
             print("doubt");
             // Navigator.of(context).push(MaterialPageRoute(builder: (context) => YourNextPage()));
@@ -49,13 +45,17 @@ class _MainScreen extends State<MainPage> {
             // ),
               child: Column(
                    children: [
+                     SizedBox(height: Cheight*0.2,),
+                     Window(),
+                     SizedBox(height: Cheight*0.2,),
                      Row(
-                       mainAxisAlignment: MainAxisAlignment.end,
+                       mainAxisAlignment: MainAxisAlignment.start,
                        children: [
+
                          Container(
-                             height: Cheight*0.82,
-                             width: Cwidgth,
-                             child: Image.asset('images/rainbow.png')),
+                             height: Cheight*0.8,
+                             width: Cwidgth*1.5,
+                             child: Image.asset('images/wildcat.png')),
                        ],
                      ),
 

@@ -1,51 +1,90 @@
 import 'package:flutter/material.dart';
-//import 'package:vachanapp/widgets/AppBar.dart';
+import 'package:vachanapp/widgets/AppBar.dart';
 import 'package:vachanapp/utils/color_utils.dart';
 import 'package:vachanapp/widgets/Heading.dart';
 import 'package:vachanapp/Screens/Alphabate.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
 
-class _MyHomePageState extends State<MyHomePage> {
+class ReadPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cwidgth = MediaQuery.of(context).size.width*0.8;
+    var cwidgth = MediaQuery.of(context).size.width*0.4;
+    var cheight = MediaQuery.of(context).size.width*0.4;
     return Scaffold(
-     // appBar: Appbar(AppBarText: "वाचन", flag: false,),
-      body:Container(
-          width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      decoration: BoxDecoration(
-      gradient: LinearGradient(
-      colors: [
-      hexStringToColor("FCE5F1"),
-      hexStringToColor("FAD2E3"),] , begin: Alignment.topCenter, end: Alignment.bottomCenter
-      ),
-      ),
-    child: SingleChildScrollView(
-      child: Column(
-        children: [
-          SizedBox(height: cwidgth*0.1,),
-          InkWell( onTap: (){
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => AlphabatePage()),
-            );
-          }
-              ,child: Heading(HeadingText: "Reading Alphabates", Cwidgth: cwidgth,)),
-          SizedBox(height: cwidgth*0.1,),
-          Image.asset('images/alphabate.jpg', width: cwidgth,),
-          SizedBox(height: cwidgth*0.1),
-          Heading(HeadingText: "Reading Numbers", Cwidgth: cwidgth,),
-          SizedBox(height: cwidgth*0.1,),
-          Image.asset('images/numbers.jpg',  width: cwidgth,),
-        ],
+        backgroundColor:  const Color.fromARGB(255, 211, 232, 239),
+      appBar: Appbar(),
 
-      ),
-    )));
+      body: SingleChildScrollView(
+        child: Column(
+             children: [
+                  Row(
+
+                    children: [
+                      Column(
+                        children: [
+
+                          InkWell(
+                            onTap: (){ Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Alphabate()),
+                            );},
+                            child: Container(
+                                width: cwidgth*1.7,
+                                height: cheight*1.7,
+                                child: Image.asset('images/property.png')),
+                          ),
+                          Row(
+
+                            children: [
+
+                              InkWell(
+                                onTap: (){},
+                                child: Container(
+                                  width: cwidgth*1.2,
+                                  child: Center(
+                                      child: Text("Alphabate Reading", style: GoogleFonts.lacquer(
+                                          fontSize: cwidgth*0.25
+                                      ),textAlign: TextAlign.center,)),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+
+                    ],
+                  ),
+                 Row(
+                   mainAxisAlignment: MainAxisAlignment.end,
+                   children: [
+                     Column(
+                       children: [
+                         Container(
+                             width: cwidgth*1.7,
+                             height: cheight*1.7,
+                             child: Image.asset('images/property.png')),
+                         Row(
+                           children: [
+
+                             Container(
+                               width: cwidgth*1.2,
+                               child: Center(
+                                   child: Text("Number Reading", style: GoogleFonts.lacquer(
+                                       fontSize: cwidgth*0.25
+                                   ),textAlign: TextAlign.center,)),
+                             ),
+                           ],
+                         ),
+                       ],
+
+                     ),
+
+                   ],),
+
+             ],
+        ),
+      ));
   }
 }
