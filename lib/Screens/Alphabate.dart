@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vachanapp/widgets/AppBar.dart';
-import 'package:vachanapp/utils/color_utils.dart';
-import 'package:vachanapp/widgets/AlphaBox.dart';
-
-
-
+import 'package:vachanapp/widgets/MidBox.dart';
 class Alphabate extends StatelessWidget {
 
   @override
@@ -25,7 +21,7 @@ class Alphabate extends StatelessWidget {
                     fontSize: Cwidgth*0.07, color: Color.fromARGB(255, 248, 134, 187), fontWeight: FontWeight.bold
                  ),)],
                ),
-               SizedBox(height: Cheight*0.16,),
+               SizedBox(height: Cheight*0.35,),
                Row(
                    mainAxisAlignment: MainAxisAlignment.end,
                    children: [
@@ -51,58 +47,48 @@ class Alphabate extends StatelessWidget {
                Row(
                  mainAxisAlignment: MainAxisAlignment.end,
                  children: [
-                   Container(
-                     width: Cwidgth*0.25,
-                     height: Cheight*0.18,
-                     color: Colors.brown,
-                   ),
-                   Container(
-                     width: Cwidgth*0.25,
-                     height: Cheight*0.18,
-                     color: Colors.brown,
-                   ),
-                   Container(
-                     width: Cwidgth*0.25,
-                     height: Cheight*0.18,
-                     color: Colors.brown,
-                   ),
-                   Container(
-                     width: Cwidgth*0.25,
-                     height: Cheight*0.18,
-                     color: Colors.brown,
-                   ),
+                   StartBox(MidBoxText: "A", flag: false), MidBox(MidBoxText: "B", flag: false), MidBox(MidBoxText: "C", flag: true),
+                   MidBox(MidBoxText: "D", flag: false),
                  ],
                ),
                Row(
                  mainAxisAlignment: MainAxisAlignment.end,
                  children: [
-
-                   Container(
-                     width: Cwidgth*0.25,
-                     height: Cheight*0.18,
-                     color: Colors.brown,
-                   ),
-                   Container(
-                     width: Cwidgth*0.25,
-                     height: Cheight*0.18,
-                     color: Colors.brown,
-                   ),
-                   Container(
-                     width: Cwidgth*0.25,
-                     height: Cheight*0.18,
-                     color: Colors.brown,
-                   ),
-                   Container(
-                     width: Cwidgth*0.25,
-                     height: Cheight*0.18,
-                     color: Colors.brown,
-                   ),
-                   Container(
-                     width: Cwidgth*0.15,
-                     height: Cheight*0.18,
-                     color: Colors.brown,
-                   ),
+                   StartBox(MidBoxText: "E", flag: true), MidBox(MidBoxText: "F", flag: false), MidBox(MidBoxText: "G", flag: false),
+                   MidBox(MidBoxText: "H", flag: true), EndBox(),
                  ],
+               ),
+               Row(
+                 mainAxisAlignment: MainAxisAlignment.end,
+                 children: [
+                   SpecialBox(MidBoxText: "I", flag: false), BlankMidBox(), SpecialBox(MidBoxText: "J", flag: false), MidBox(MidBoxText: "K", flag: false),
+                 ],
+               ),
+               Row(
+                 mainAxisAlignment: MainAxisAlignment.end,
+                 children: [
+                   StartBox(MidBoxText: "L", flag: false), MidBox(MidBoxText: "M", flag: true), MidBox(MidBoxText: "N", flag: false), MidBox(MidBoxText: "O", flag: true), EndBox(),
+                 ],
+               ),
+               Row(
+                 mainAxisAlignment: MainAxisAlignment.end,
+                 children: [StartBox(MidBoxText: "P", flag: true), SpecialBox(MidBoxText: "Q", flag: false), BlankMidBox(), SpecialBox(MidBoxText: "R", flag: false),
+                 ],
+               ),
+               Row(
+                 mainAxisAlignment: MainAxisAlignment.end,
+                 children: [
+                   StartBox(MidBoxText: "S", flag: false), MidBox(MidBoxText: "T", flag: false), MidBox(MidBoxText: "U", flag: true), MidBox(MidBoxText: "V", flag: false), EndBox(),
+                 ],
+               ),
+               Row(
+                 mainAxisAlignment: MainAxisAlignment.end,
+                 children: [
+                   StartBox(MidBoxText: "W", flag: false), MidBox(MidBoxText: "X", flag: true), MidBox(MidBoxText: "Y", flag: true), MidBox(MidBoxText: "Z", flag: false),
+                 ],
+               ),
+               Container(
+                  color: Color.fromARGB(255, 23, 120, 128), height: Cheight*0.2, width: Cwidgth*1.5,
                )
 
              ],

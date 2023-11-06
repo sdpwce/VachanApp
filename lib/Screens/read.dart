@@ -3,6 +3,7 @@ import 'package:vachanapp/widgets/AppBar.dart';
 import 'package:vachanapp/utils/color_utils.dart';
 import 'package:vachanapp/widgets/Heading.dart';
 import 'package:vachanapp/Screens/Alphabate.dart';
+import 'package:vachanapp/Screens/Number.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -31,8 +32,8 @@ class ReadPage extends StatelessWidget {
                               MaterialPageRoute(builder: (context) => Alphabate()),
                             );},
                             child: Container(
-                                width: cwidgth*1.7,
-                                height: cheight*1.7,
+                                width: cwidgth*1.4,
+                                height: cheight*1.4,
                                 child: Image.asset('images/property.png')),
                           ),
                           Row(
@@ -56,15 +57,22 @@ class ReadPage extends StatelessWidget {
 
                     ],
                   ),
+                 SizedBox(height: cwidgth*0.3,),
                  Row(
                    mainAxisAlignment: MainAxisAlignment.end,
                    children: [
                      Column(
                        children: [
-                         Container(
-                             width: cwidgth*1.7,
-                             height: cheight*1.7,
-                             child: Image.asset('images/property.png')),
+                         InkWell(
+                           onTap: (){ Navigator.push(
+                             context,
+                             MaterialPageRoute(builder: (context) => Number(),
+                           ));},
+                           child: Container(
+                               width: cwidgth*1.4,
+                               height: cheight*1.4,
+                               child: Image.asset('images/property.png')),
+                         ),
                          Row(
                            children: [
 

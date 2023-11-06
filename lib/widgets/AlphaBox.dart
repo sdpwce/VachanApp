@@ -68,7 +68,7 @@ class _MyHomePageState extends State<AlphabateBox> {
             speak(headingText);
           },
           onLongPress: (){
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  AlphaDetail(AlphaText: headingText)));
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  DetailAlphabate(BoxText: headingText,)));
           },
           child: Text(headingText,
             style: TextStyle(

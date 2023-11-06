@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vachanapp/Screens/Auth_Page.dart';
+import 'package:vachanapp/stt.dart';
 //import 'package:firebase_core/firebase_core.dart';
+
 
 void main() async {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       home : Scaffold(
-        body: AuthPage(), // have to change here main page
+        body: HomePage(), // have to change here main page
 
       ),
       debugShowCheckedModeBanner: false,

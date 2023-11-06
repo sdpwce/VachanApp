@@ -30,6 +30,7 @@ class Button extends StatelessWidget implements PreferredSizeWidget {
               fontSize:Cwidgth * 0.08,
               fontWeight: FontWeight.bold
           ),
+          textAlign: TextAlign.center,
         ),
       ),
       style: ElevatedButton.styleFrom(
