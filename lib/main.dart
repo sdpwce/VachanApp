@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       home : Scaffold(
-        body: HomePage(), // have to change here main page
+        body: AuthPage(), // have to change here main page
 
       ),
       debugShowCheckedModeBanner: false,

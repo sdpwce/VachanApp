@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vachanapp/Screens/Alphabate.dart';
 import 'package:vachanapp/Screens/read.dart';
+
+import '../Screens/NumberDetail.dart';
+import '../stt.dart';
+
+
 class Window extends StatelessWidget {
   const Window({Key? key,}) : super(key: key);
 
@@ -72,35 +77,46 @@ class Window extends StatelessWidget {
                   ),
                 ),
 
-                Padding(
-                  padding: const EdgeInsets.all(6.0),
-                  child: Container(
-                    width: Cwidgth*0.9*0.46,
-                    height: Cheight*0.9*0.55,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0), // Adjust the radius to control the curve.
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black38, // Shadow color
-                            offset: Offset(0, 2), // Offset of the shadow
-                            blurRadius: 15.0, // Spread of the shadow
-                          ),
-                        ],
-                        color:    const Color.fromARGB(255, 255, 255, 255)),
-                    child: Column(
-                        children: [
-                          Container(
-                              width: Cwidgth*0.9*0.46*0.9,
-                              height: Cwidgth*0.9*0.46*0.8,
-                              child: Image.asset('images/brain.png')),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text("knowledge", style: GoogleFonts.lacquer(
-                                fontSize: Cwidgth*0.08,
-                              color: Color.fromARGB(255, 23, 120, 128),
-                            ),textAlign: TextAlign.center, ),
-                          )
-                        ],
+                InkWell(
+                  onTap: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SttPage()));
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => MyApp()),
+                    // );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(6.0),
+                    child: Container(
+                      width: Cwidgth*0.9*0.46,
+                      height: Cheight*0.9*0.55,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0), // Adjust the radius to control the curve.
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black38, // Shadow color
+                              offset: Offset(0, 2), // Offset of the shadow
+                              blurRadius: 15.0, // Spread of the shadow
+                            ),
+                          ],
+                          color:    const Color.fromARGB(255, 255, 255, 255)),
+                      child: Column(
+                          children: [
+                            Container(
+                                width: Cwidgth*0.9*0.46*0.9,
+                                height: Cwidgth*0.9*0.46*0.8,
+                                child: Image.asset('images/brain.png')),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text("knowledge", style: GoogleFonts.lacquer(
+                                  fontSize: Cwidgth*0.08,
+                                color: Color.fromARGB(255, 23, 120, 128),
+                              ),textAlign: TextAlign.center, ),
+                            )
+                          ],
+                      ),
                     ),
                   ),
                 )

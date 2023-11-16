@@ -16,7 +16,7 @@ String Name(String name){
   else if(name == "F")
     return 'Fish';
   else if(name == "G")
-    return 'Graps';
+    return 'Grapes';
   else if(name == "H")
     return 'Horse';
   else if(name == "I")
@@ -129,11 +129,11 @@ String Line(String name){
   else if(name == "F")
     return 'F for Fish';
   else if(name == "G")
-    return 'G for Graps';
+    return 'G for Grapes';
   else if(name == "H")
     return 'H for Horse';
   else if(name == "I")
-    return 'I for IceCream';
+    return 'I for Ice Cream';
   else if(name == "J")
     return 'J for Juice';
   else if(name == "K")
@@ -163,7 +163,7 @@ String Line(String name){
   else if(name == "W")
     return 'W for Watch';
   else if(name == "X")
-    return 'X for XmasTree';
+    return 'X for Xmas Tree';
   else if(name == "Y")
     return 'Y for Yac';
   else

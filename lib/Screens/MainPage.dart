@@ -32,38 +32,48 @@ class _MainScreen extends State<MainPage> {
           child: Icon(Icons.question_mark), // You can change the icon as needed
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-        body: SingleChildScrollView(
-          child: Container(
-            // width: MediaQuery.of(context).size.width,
-            // height: MediaQuery.of(context).size.height,
-            // decoration: BoxDecoration(
-            //   gradient: LinearGradient(
-            //       colors: [
-            //         hexStringToColor("FCE5F1"),
-            //         hexStringToColor("FAD2E3"),] , begin: Alignment.topCenter, end: Alignment.bottomCenter
-            //   ),
-            // ),
-              child: Column(
-                   children: [
-                     SizedBox(height: Cheight*0.2,),
-                     Window(),
-                     SizedBox(height: Cheight*0.2,),
-                     Row(
-                       mainAxisAlignment: MainAxisAlignment.start,
-                       children: [
-
-                         Container(
-                             height: Cheight*0.8,
-                             width: Cwidgth*1.5,
-                             child: Image.asset('images/wildcat.png')),
-                       ],
-                     ),
-
-                   ],
-              ),
+        body: Stack(
+          children:[
+            Image.asset(
+              'images/fback.jpg',
+              fit: BoxFit.cover, // You can adjust the fit property as needed
+              width: double.infinity,
+              height: double.infinity,
             ),
+            SingleChildScrollView(
+            child: Container(
+              // width: MediaQuery.of(context).size.width,
+              // height: MediaQuery.of(context).size.height,
+              // decoration: BoxDecoration(
+              //   gradient: LinearGradient(
+              //       colors: [
+              //         hexStringToColor("FCE5F1"),
+              //         hexStringToColor("FAD2E3"),] , begin: Alignment.topCenter, end: Alignment.bottomCenter
+              //   ),
+              // ),
+                child: Column(
+                     children: [
+                       SizedBox(height: Cheight*0.2,),
+                       Window(),
+                       SizedBox(height: Cheight*0.15,),
+                       Row(
+                         mainAxisAlignment: MainAxisAlignment.start,
+                         children: [
 
-          ),
+                           Container(
+                               height: Cheight*0.8,
+                               width: Cwidgth*1.6,
+                               child: Image.asset('images/wildcat.png')),
+                         ],
+                       ),
+
+                     ],
+                ),
+              ),
+
+            ),
+            ]
+        ),
         ),
       debugShowCheckedModeBanner: false,
     );

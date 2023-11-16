@@ -11,88 +11,97 @@ class ReadPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cwidgth = MediaQuery.of(context).size.width*0.4;
-    var cheight = MediaQuery.of(context).size.width*0.4;
+    var cwidgth = MediaQuery.of(context).size.width;
+    var cheight = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor:  const Color.fromARGB(255, 211, 232, 239),
       appBar: Appbar(),
 
-      body: SingleChildScrollView(
-        child: Column(
-             children: [
-                  Row(
-
-                    children: [
-                      Column(
-                        children: [
-
-                          InkWell(
-                            onTap: (){ Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Alphabate()),
-                            );},
-                            child: Container(
-                                width: cwidgth*1.4,
-                                height: cheight*1.4,
-                                child: Image.asset('images/property.png')),
-                          ),
-                          Row(
-
-                            children: [
-
-                              InkWell(
-                                onTap: (){},
-                                child: Container(
-                                  width: cwidgth*1.2,
-                                  child: Center(
-                                      child: Text("Alphabate Reading", style: GoogleFonts.lacquer(
-                                          fontSize: cwidgth*0.25
-                                      ),textAlign: TextAlign.center,)),
-                                ),
+      body: Stack(
+        children:[  Image.asset(
+          'images/homebackground.png',
+          fit: BoxFit.cover, // You can adjust the fit property as needed
+          width: double.infinity,
+          height: double.infinity,
+        ),
+          Row(
+               children: [
+                    Container(
+                      width: cwidgth*0.55,
+                      height: cheight,
+                    //  color: Colors.red,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            InkWell(
+                              onTap: (){
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => Alphabate()));
+                              },
+                              child: Container(
+                                width: cwidgth*1.2,
+                                child: Center(
+                                    child: Text("Alphabet Reading", style: GoogleFonts.lacquer(
+                                      fontSize: cwidgth*0.1,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),textAlign: TextAlign.center,)),
                               ),
-                            ],
-                          ),
-                        ],
+                            ),
+                                InkWell(
+                                  onTap: (){ Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => Alphabate()),
+                                  );},
+                                  child: Container(
+                                      width: cwidgth*0.55,
+                                      height: cheight*0.3,
+                                      child: Image.asset('images/farm_house2.png')),
+                                ),
+                          ],
                       ),
-
-                    ],
-                  ),
-                 SizedBox(height: cwidgth*0.3,),
-                 Row(
-                   mainAxisAlignment: MainAxisAlignment.end,
-                   children: [
-                     Column(
+                    ),
+                   Container(
+                     width: cwidgth*0.45,
+                     height: cheight,
+                   //  color: Colors.black,
+                     child: Column(
                        children: [
-                         InkWell(
-                           onTap: (){ Navigator.push(
-                             context,
-                             MaterialPageRoute(builder: (context) => Number(),
-                           ));},
-                           child: Container(
-                               width: cwidgth*1.4,
-                               height: cheight*1.4,
-                               child: Image.asset('images/property.png')),
-                         ),
-                         Row(
-                           children: [
+                         SizedBox(height: cheight*0.49,),
+                       InkWell(
+                             onTap: (){ Navigator.push(
+                               context,
+                               MaterialPageRoute(builder: (context) => Number(),
+                             ));},
+                             child: Container(
 
-                             Container(
+                                 height: cheight*0.2,
+                                 child: Image.asset('images/farm_house.png')),
+                           ),
+                         SizedBox(height: cheight*0.04,),
+                     InkWell(
+                             onTap: (){
+                               Navigator.push(
+                                   context,
+                                   MaterialPageRoute(builder: (context) => Number(),));
+                             },
+                             child: Container(
                                width: cwidgth*1.2,
                                child: Center(
                                    child: Text("Number Reading", style: GoogleFonts.lacquer(
-                                       fontSize: cwidgth*0.25
+                                       fontSize: cwidgth*0.1,
+                                       fontWeight: FontWeight.bold,
                                    ),textAlign: TextAlign.center,)),
                              ),
-                           ],
-                         ),
+                           ),
                        ],
-
                      ),
 
-                   ],),
+                   ),
 
-             ],
-        ),
-      ));
+               ],
+          ),
+      ]));
   }
 }

@@ -231,7 +231,7 @@ class BlankMidBox extends StatelessWidget{
     return Container(
       width: Cheight*0.25,
       height: Cheight*0.18,
-      color: Colors.white,
+    //  color: Colors.white,
     );
   }
 
