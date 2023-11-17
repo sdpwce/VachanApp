@@ -4,16 +4,17 @@ import 'package:vachanapp/Screens/ProfilePage.dart';
 class Appbar extends StatelessWidget implements PreferredSizeWidget {
 
   const Appbar(
-      {Key? key,
+      {Key? key, required this.apptext,
       })
       : super(key: key);
+  final String apptext;
 
   Widget build(BuildContext context) {
     var Cwidgth = MediaQuery.of(context).size.height*0.38;
     return AppBar(
       title: Padding(
         padding: const EdgeInsets.only(left: Checkbox.width*1.3, top: Checkbox.width*0.8),
-        child: Text("वाचन",
+        child: Text(apptext,
           textAlign: TextAlign.left,
           style: TextStyle(
             color: Colors.white,

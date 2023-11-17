@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:vachanapp/utils/color_utils.dart';
 import 'package:vachanapp/widgets/AppBar.dart';
 import 'package:vachanapp/widgets/Window.dart';
 
@@ -21,7 +20,7 @@ class _MainScreen extends State<MainPage> {
     var cwidgth = MediaQuery.of(context).size.width*0.45;
     return MaterialApp(
       home: Scaffold(
-        appBar: Appbar(),
+        appBar: Appbar(apptext: "वाचन",),
         floatingActionButton: FloatingActionButton(
           backgroundColor: const Color.fromARGB(255, 248, 134, 187),
 

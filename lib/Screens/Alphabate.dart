@@ -8,7 +8,7 @@ class Alphabate extends StatelessWidget {
     var Cwidgth = MediaQuery.of(context).size.height*0.38;
     var Cheight = MediaQuery.of(context).size.height*0.38;
     return Scaffold(
-     appBar:  Appbar(),
+     appBar:  Appbar(apptext: "वाचन",),
       body: Stack(
         children: [
           Image.asset(

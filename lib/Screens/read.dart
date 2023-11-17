@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:vachanapp/widgets/AppBar.dart';
-import 'package:vachanapp/utils/color_utils.dart';
 import 'package:vachanapp/widgets/Heading.dart';
 import 'package:vachanapp/Screens/Alphabate.dart';
 import 'package:vachanapp/Screens/Number.dart';
@@ -15,7 +14,7 @@ class ReadPage extends StatelessWidget {
     var cheight = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor:  const Color.fromARGB(255, 211, 232, 239),
-      appBar: Appbar(),
+      appBar: Appbar(apptext: "वाचन",),
 
       body: Stack(
         children:[  Image.asset(

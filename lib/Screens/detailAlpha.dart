@@ -154,7 +154,7 @@ class _DetailAlpha extends State<DetailAlphabate> {
         ),
         backgroundColor: Colors.red,
       ),
-      appBar: Appbar(),
+      appBar: Appbar(apptext: "वाचन",),
       body: Stack(
         children: [
           Image.asset(

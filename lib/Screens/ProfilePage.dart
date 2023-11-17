@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 //import 'package:vachanapp/widgets/AppBar.dart';
-import 'package:vachanapp/utils/color_utils.dart';
 import 'package:vachanapp/Screens/ProfilePage.dart';
 
 class ProfilePage extends StatefulWidget{
@@ -30,8 +29,9 @@ class _MainScreen extends State<ProfilePage> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                   colors: [
-                    hexStringToColor("FCE5F1"),
-                    hexStringToColor("FAD2E3"),] , begin: Alignment.topCenter, end: Alignment.bottomCenter
+                    Colors.white,
+                    Colors.white38,
+                   ] , begin: Alignment.topCenter, end: Alignment.bottomCenter
               ),
             ),
             child: Column(

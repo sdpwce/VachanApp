@@ -4,6 +4,7 @@ import 'package:vachanapp/Screens/Alphabate.dart';
 import 'package:vachanapp/Screens/read.dart';
 
 import '../Screens/NumberDetail.dart';
+import '../Screens/knowlege.dart';
 import '../stt.dart';
 
 
@@ -81,7 +82,7 @@ class Window extends StatelessWidget {
                   onTap: (){
                     Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => SttPage()));
+                        MaterialPageRoute(builder: (context) => KnowPage()));
                     // Navigator.push(
                     //   context,
                     //   MaterialPageRoute(builder: (context) => MyApp()),
