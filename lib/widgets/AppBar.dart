@@ -8,7 +8,6 @@ class Appbar extends StatelessWidget implements PreferredSizeWidget {
       })
       : super(key: key);
   final String apptext;
-
   Widget build(BuildContext context) {
     var Cwidgth = MediaQuery.of(context).size.height*0.38;
     return AppBar(

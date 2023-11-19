@@ -438,7 +438,7 @@ class NumberD extends State<NumberDetail> with TickerProviderStateMixin{
     var Cwidgth = MediaQuery.of(context).size.width;
     var Cheight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar:  Appbar(apptext: "वाचन",),
+      appBar:  Appbar(apptext: "वाचन"),
       body: Stack(
         children: [
           Image.asset(

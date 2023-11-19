@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vachanapp/detailC.dart';
+
+import '../Screens/ColorDetail.dart';
 
 class ColorBox extends StatelessWidget {
   ColorBox({Key? key,
@@ -39,6 +42,9 @@ class ColorBox extends StatelessWidget {
       onTap: (){
         speak(colorboxText);
       },
+        onLongPress: (){
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ColorDetail(BoxText: colorboxText, color : color, flag: Iflag(colorboxText),)));
+        },
       onDoubleTap: (){},
       child: Container(
           height: Cheight*0.21,
