@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vachanapp/Screens/fruits.dart';
+import 'package:vachanapp/Screens/Fruits.dart';
+import 'package:vachanapp/Screens/Shapes.dart';
+import 'package:vachanapp/Screens/animals.dart';
 import 'package:vachanapp/widgets/AppBar.dart';
 import 'package:vachanapp/Screens/Alphabate.dart';
 import 'package:vachanapp/Screens/Number.dart';
@@ -29,7 +31,7 @@ class KnowPage extends StatelessWidget {
                children: [
                      InkWell(
                        onTap: (){
-                         Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyApp()));
+                         null;
                        },
                        child: Container(
                            height: cheight*0.42,
@@ -37,6 +39,9 @@ class KnowPage extends StatelessWidget {
                            child: Row(
                                children: [
                                    InkWell(
+                                     onTap: (){
+                                       Navigator.of(context).push(MaterialPageRoute(builder: (context) => Fruits()));
+                                     },
                                      child: Container(
                                          width: cwidgth*0.45,
                                       // color: Colors.blue,
@@ -132,7 +137,10 @@ class KnowPage extends StatelessWidget {
                    child: Row(
                      children: [
                        InkWell(
-                         child: Container(
+                           onTap:(){
+                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => Animals()));
+                            },
+                          child: Container(
                            width: cwidgth*0.38,
                          //  color: Colors.white,
                            child: Column(
@@ -165,6 +173,9 @@ class KnowPage extends StatelessWidget {
                          ),
                        ),
                        InkWell(
+                         onTap:(){
+                           Navigator.of(context).push(MaterialPageRoute(builder: (context) => ShapePage()));
+                         },
                          child: Container(
                            width: cwidgth*0.62,
                           // color: Colors.blue,
@@ -176,7 +187,7 @@ class KnowPage extends StatelessWidget {
                                      Container(
                                          width: cwidgth*0.62*0.8,
                                          height: cheight*0.46*0.5,
-                                         child: Image.asset('images/table-fan.png')),
+                                         child: Image.asset('images/trishape.png')),
                                      SizedBox(
                                        width: cwidgth*0.62*0.15,
                                      ),
@@ -185,7 +196,7 @@ class KnowPage extends StatelessWidget {
                                  SizedBox( height: cheight*0.46*0.05,),
                                  Row(  mainAxisAlignment: MainAxisAlignment.end,
                                    children: [
-                                     Text("Things", style: GoogleFonts.lacquer(
+                                     Text("Shapes", style: GoogleFonts.lacquer(
                                        fontSize: cwidgth*0.09,
                                        fontWeight: FontWeight.bold,
                                        //   color: Color.fromARGB(255, 23, 120, 128),

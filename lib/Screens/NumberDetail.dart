@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vachanapp/Screens/DetailNumber.dart';
 import 'package:vachanapp/widgets/AppBar.dart';
 import 'package:vachanapp/widgets/drop.dart';
 import 'package:vachanapp/widgets/numberBox.dart';
@@ -468,6 +469,8 @@ class NumberD extends State<NumberDetail> with TickerProviderStateMixin{
 
                                           //  print(_containersVisible2);
 
+                                          },    onLongPress: (){
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "1")));
                                           },
                                               child: NumberBox(MidBoxText: "1", flag: true, rl: false,)),],),
                                       SizedBox(height:  Cheight*0.82*0.02,),
@@ -477,6 +480,8 @@ class NumberD extends State<NumberDetail> with TickerProviderStateMixin{
                                         _startFallingAnimation();
                                        // print(_containersVisible);
 
+                                      },  onLongPress: (){
+                                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "2")));
                                       },
                                       child: NumberBox(MidBoxText: "2", flag: true, rl: false,)),],),
                                       SizedBox(height:  Cheight*0.82*0.02,),
@@ -486,8 +491,9 @@ class NumberD extends State<NumberDetail> with TickerProviderStateMixin{
                                           _showContainers(3);
                                           _startFallingAnimation();
                                         //  print(_containersVisible);
-
-                                        },
+                                         },   onLongPress: (){
+                                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "3")));
+                                      },
                                         child: NumberBox(MidBoxText: "3", flag: true, rl: false,)),],),
                                       SizedBox(height:  Cheight*0.82*0.4,),
                                       Row(children: [InkWell(
@@ -497,6 +503,9 @@ class NumberD extends State<NumberDetail> with TickerProviderStateMixin{
                                             _startFallingAnimation();
                                             //  print(_containersVisible);
 
+                                          },
+                                          onLongPress: (){
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "7")));
                                           },
                                           child: NumberBox(MidBoxText: "7", flag: false, rl: false,)),],),
                                       SizedBox(height:  Cheight*0.82*0.02,),
@@ -508,9 +517,19 @@ class NumberD extends State<NumberDetail> with TickerProviderStateMixin{
                                             //  print(_containersVisible);
 
                                           },
+                                          onLongPress: (){
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "8")));
+                                          },
                                           child: NumberBox(MidBoxText: "8", flag: false, rl: false,)),],),
                                       SizedBox(height:  Cheight*0.82*0.18,),
-                                      Row(children: [NumberBox(MidBoxText: "0", flag: true, rl: false,),],),
+                                      Row(children: [InkWell(
+                                          onTap:(){
+                                              speak("No water drops are falling");
+                                           },
+                                          onLongPress: (){
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "0")));
+                                          },
+                                          child: NumberBox(MidBoxText: "0", flag: true, rl: false,)),],),
                                     ],
 
                                 ),
@@ -651,7 +670,9 @@ class NumberD extends State<NumberDetail> with TickerProviderStateMixin{
                                                        _startFallingAnimation();
                                                        print(_containersVisible);
 
-                                                     },
+                                                     },  onLongPress: (){
+                                                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "4")));
+                                                   },
                                                      child: NumberBox(MidBoxText: "4", flag: true, rl: true,)),],),
                                                      SizedBox(height:  Cheight*0.82*0.02*0.85,),
                                                       Row(  mainAxisAlignment:MainAxisAlignment.end,
@@ -664,7 +685,10 @@ class NumberD extends State<NumberDetail> with TickerProviderStateMixin{
                                                               //  print(_containersVisible);
 
                                                               },
-                                                              child: NumberBox(MidBoxText: "5", flag: true, rl: true,)),
+                                                              child: NumberBox(MidBoxText: "5", flag: true, rl: true,),
+                                                            onLongPress: (){
+                                                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "5")));
+                                                            },),
                                                         ],
                                                       ),
 
@@ -680,7 +704,10 @@ class NumberD extends State<NumberDetail> with TickerProviderStateMixin{
 
                                                              },
 
-                                                             child: NumberBox(MidBoxText: "6", flag: true, rl: true,)),
+                                                             child: NumberBox(MidBoxText: "6", flag: true, rl: true,),
+                                                           onLongPress: (){
+                                                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "6")));
+                                                           },),
                                                        ],
                                                      ),
                                                      SizedBox(height:  Cheight*0.82*0.45*0.85,),
@@ -694,6 +721,9 @@ class NumberD extends State<NumberDetail> with TickerProviderStateMixin{
                                                            //  print(_containersVisible);
 
                                                          },
+                                                         onLongPress: (){
+                                                           Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "9")));
+                                                         },
                                                          child: NumberBox(MidBoxText: "9", flag: false, rl: true,)),],),
                                                      SizedBox(height:  Cheight*0.82*0.02*0.85,),
                                                      Row( mainAxisAlignment: MainAxisAlignment.end,
@@ -705,6 +735,9 @@ class NumberD extends State<NumberDetail> with TickerProviderStateMixin{
                                                            //  print(_containersVisible);
 
                                                          },
+                                                           onLongPress: (){
+                                                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "10")));
+                                                           },
                                                          child: NumberBox(MidBoxText: "10", flag: false, rl: true,)),],),
                                                    ],
                                                  ),

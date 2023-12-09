@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vachanapp/Screens/Alphabate.dart';
+import 'package:vachanapp/Screens/Words.dart';
 import 'package:vachanapp/Screens/read.dart';
 
 import '../Screens/NumberDetail.dart';
@@ -83,10 +84,6 @@ class Window extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => KnowPage()));
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => MyApp()),
-                    // );
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(6.0),
@@ -158,23 +155,30 @@ class Window extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(5.0),
-                  child: Container(
-                    width: Cwidgth*0.9*0.46,
-                    height: Cheight*0.9*0.55,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0), // Adjust the radius to control the curve.
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black38, // Shadow color
-                            offset: Offset(0, 2), // Offset of the shadow
-                            blurRadius: 15.0, // Spread of the shadow
-                          ),
-                        ],
-                        color:   const Color.fromARGB(255, 211, 232, 239)),
-                    child: Center(
-                      child: Text("Words Reading", style: GoogleFonts.lacquer(
-                          fontSize: Cwidgth*0.125
-                      ),textAlign: TextAlign.center,),
+                  child: InkWell(
+                      onTap: (){
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Words()));
+                      },
+                    child: Container(
+                      width: Cwidgth*0.9*0.46,
+                      height: Cheight*0.9*0.55,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0), // Adjust the radius to control the curve.
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black38, // Shadow color
+                              offset: Offset(0, 2), // Offset of the shadow
+                              blurRadius: 15.0, // Spread of the shadow
+                            ),
+                          ],
+                          color:   const Color.fromARGB(255, 211, 232, 239)),
+                      child: Center(
+                        child: Text("Words Reading", style: GoogleFonts.lacquer(
+                            fontSize: Cwidgth*0.125
+                        ),textAlign: TextAlign.center,),
+                      ),
                     ),
                   ),
                 )

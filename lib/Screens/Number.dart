@@ -14,7 +14,7 @@ class Number extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/backg2.jpg'), // Replace with your image path
+            image: AssetImage('images/background2.jpg'), // Replace with your image path
             fit: BoxFit.cover,
           ),
         ),
