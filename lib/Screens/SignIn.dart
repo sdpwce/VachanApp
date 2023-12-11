@@ -18,7 +18,7 @@ class _SignInScreenState extends State<SignInScreen>{
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
   final _finalpasswordController = TextEditingController();
-  String selectedLanguage = 'Marathi';
+  bool selectedLanguage = false;
   @override
   Widget build(BuildContext context){
     var Cheight = MediaQuery.of(context).size.height*0.48;
@@ -104,7 +104,7 @@ class _SignInScreenState extends State<SignInScreen>{
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Radio(
-                                    value: 'Marathi',
+                                    value: false,
                                     groupValue: selectedLanguage,
                                     onChanged: (value) {
                                       setState(() {
@@ -121,7 +121,7 @@ class _SignInScreenState extends State<SignInScreen>{
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Radio(
-                                    value: 'English',
+                                    value: true,
                                     groupValue: selectedLanguage,
                                     onChanged: (value) {
                                       setState(() {
@@ -139,7 +139,7 @@ class _SignInScreenState extends State<SignInScreen>{
                           SizedBox(
                             height: MediaQuery.of(context).size.height*0.07,
                           ),
-                          Button(ButtonText: "LogIn", onTap:(){ navigateToSecondPage(context);}),
+                          Button(ButtonText: "LogIn", onTap:(){ navigateToSecondPage(context, selectedLanguage);}),
                           SizedBox(
                             height: MediaQuery.of(context).size.height*0.01,
                           ),
@@ -190,9 +190,11 @@ class _SignInScreenState extends State<SignInScreen>{
 }
 
 // Function to navigate to the Second Page
-void navigateToSecondPage(BuildContext context) {
+void navigateToSecondPage(BuildContext context, bool Slang) {
+
+  var selectedLanguage = Slang;
   Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => MainPage()),
+    MaterialPageRoute(builder: (context) => MainPage(lang: selectedLanguage = Slang,)),
   );
 }

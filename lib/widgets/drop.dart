@@ -4,12 +4,13 @@ import 'package:flutter_tts/flutter_tts.dart';
 class BigDrop extends StatelessWidget {
   BigDrop({Key? key,
     required this.DropText,
-    required this.three,
+    required this.three, required this.lang,
   })
       : super(key: key);
 
   final String DropText;
   final bool three;
+  final bool lang;
   FlutterTts flutterTts = FlutterTts();
 
   Future<void> initTts() async {
@@ -28,10 +29,34 @@ class BigDrop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String sp = "";
+    if(DropText == '0' && lang == false)
+          sp = "शून्य";
+    if(DropText == '१' && lang == false)
+      sp = "एक";
+    if(DropText == '२' && lang == false)
+      sp = "दोन";
+    if(DropText == '३' && lang == false)
+      sp = "तीन";
+    if(DropText == '४' && lang == false)
+      sp = "चार";
+    if(DropText == '५' && lang == false)
+      sp = "पाच";
+    if(DropText == '६' && lang == false)
+      sp = "सहा";
+    if(DropText == '७' && lang == false)
+      sp = "सात";
+    if(DropText == '८' && lang == false)
+      sp = "आठ";
+    if(DropText == '९' && lang == false)
+      sp = "नऊ";
     var Cheight = MediaQuery.of(context).size.height*0.38;
     return InkWell(
       onTap: (){
-        speak(DropText);
+        if(lang == false)
+           speak(sp);
+        else
+          speak(DropText);
       },
       onDoubleTap: (){},
       child: Stack(
@@ -65,10 +90,10 @@ class BigDrop extends StatelessWidget {
 
 class Drop extends StatelessWidget {
   Drop({Key? key,
-    required this.DropText,
+    required this.DropText, required this.lang,
   })
       : super(key: key);
-
+  final bool lang;
   final String DropText;
   FlutterTts flutterTts = FlutterTts();
 
@@ -89,10 +114,34 @@ class Drop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String sp = "";
+    if(DropText == '0' && lang == false)
+      sp = "शून्य";
+    if(DropText == '१' && lang == false)
+      sp = "एक";
+    if(DropText == '२' && lang == false)
+      sp = "दोन";
+    if(DropText == '३' && lang == false)
+      sp = "तीन";
+    if(DropText == '४' && lang == false)
+      sp = "चार";
+    if(DropText == '५' && lang == false)
+      sp = "पाच";
+    if(DropText == '६' && lang == false)
+      sp = "सहा";
+    if(DropText == '७' && lang == false)
+      sp = "सात";
+    if(DropText == '८' && lang == false)
+      sp = "आठ";
+    if(DropText == '९' && lang == false)
+      sp = "नऊ";
     var Cheight = MediaQuery.of(context).size.height*0.38;
     return InkWell(
       onTap: (){
-        speak(DropText);
+        if(lang == false)
+          speak(sp);
+        else
+          speak(DropText);
       },
       onDoubleTap: (){},
       child: Stack(
@@ -127,10 +176,10 @@ class Drop extends StatelessWidget {
 class SmallDrop extends StatelessWidget {
   SmallDrop({Key? key,
     required this.DropText,
-    required this.four,
+    required this.four, required this.lang,
   })
       : super(key: key);
-
+  final bool lang;
   final String DropText;
   final bool four;
 
@@ -152,10 +201,34 @@ class SmallDrop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String sp = "";
+    if(DropText == '0' && lang == false)
+      sp = "शून्य";
+    if(DropText == '१' && lang == false)
+      sp = "एक";
+    if(DropText == '२' && lang == false)
+      sp = "दोन";
+    if(DropText == '३' && lang == false)
+      sp = "तीन";
+    if(DropText == '४' && lang == false)
+      sp = "चार";
+    if(DropText == '५' && lang == false)
+      sp = "पाच";
+    if(DropText == '६' && lang == false)
+      sp = "सहा";
+    if(DropText == '७' && lang == false)
+      sp = "सात";
+    if(DropText == '८' && lang == false)
+      sp = "आठ";
+    if(DropText == '९' && lang == false)
+      sp = "नऊ";
     var Cheight = MediaQuery.of(context).size.height*0.38;
     return InkWell(
       onTap: (){
-        speak(DropText);
+        if(lang == false)
+          speak(sp);
+        else
+          speak(DropText);
       },
       onDoubleTap: (){},
       child: Stack(
@@ -190,10 +263,10 @@ class SmallDrop extends StatelessWidget {
 class TenDrop extends StatelessWidget {
   TenDrop({Key? key,
     required this.DropText,
-    required this.four,
+    required this.four, required this.lang,
   })
       : super(key: key);
-
+  final bool lang;
   final String DropText;
   final bool four;
 
@@ -215,10 +288,34 @@ class TenDrop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String sp = "";
+    if(DropText == '0' && lang == false)
+      sp = "शून्य";
+    if(DropText == '१' && lang == false)
+      sp = "एक";
+    if(DropText == '२' && lang == false)
+      sp = "दोन";
+    if(DropText == '३' && lang == false)
+      sp = "तीन";
+    if(DropText == '४' && lang == false)
+      sp = "चार";
+    if(DropText == '५' && lang == false)
+      sp = "पाच";
+    if(DropText == '६' && lang == false)
+      sp = "सहा";
+    if(DropText == '७' && lang == false)
+      sp = "सात";
+    if(DropText == '८' && lang == false)
+      sp = "आठ";
+    if(DropText == '९' && lang == false)
+      sp = "नऊ";
     var Cheight = MediaQuery.of(context).size.height*0.38;
     return InkWell(
       onTap: (){
-        speak(DropText);
+        if(lang == false)
+          speak(sp);
+        else
+          speak(DropText);
       },
       onDoubleTap: (){},
       child: Stack(

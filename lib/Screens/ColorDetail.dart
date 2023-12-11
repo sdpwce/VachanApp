@@ -11,7 +11,8 @@ class ColorDetail extends StatefulWidget {
   const ColorDetail({Key? key,
     required this.BoxText,
     required this.color,
-    required this.flag,
+    required this.flag, required this.lang,
+
 
     //  required this.fontSize,
   })
@@ -20,22 +21,25 @@ class ColorDetail extends StatefulWidget {
   final String BoxText;
   final Color color;
   final bool flag;
-  _DetailAlpha createState() => _DetailAlpha(BoxText: BoxText, color: color, flag : flag);
+  final bool lang;
+  _DetailAlpha createState() => _DetailAlpha(BoxText: BoxText, color: color, flag : flag, lang: lang);
 
 }
 
 class _DetailAlpha extends State<ColorDetail> {
 
   // stt.SpeechToText speech = stt.SpeechToText();
-  _DetailAlpha({Key? key,
+  _DetailAlpha( {Key? key,
     required this.BoxText,
     required this.color,
     required this.flag,
+    required this.lang,
   });
 
   final String BoxText;
   final Color color;
   final bool flag;
+  final bool lang;
   FlutterTts flutterTts = FlutterTts();
 
   Future<void> initTts() async {
@@ -144,7 +148,7 @@ class _DetailAlpha extends State<ColorDetail> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: _speechToText.isListening ? _stopListening : _startListening,
-        tooltip: 'Listen',
+        tooltip: lang?'Listen':'ऐका',
         child: Icon(
           _speechToText.isNotListening ? Icons.mic_off : Icons.mic,
           color: Colors.white,
@@ -271,9 +275,9 @@ class _DetailAlpha extends State<ColorDetail> {
                                                             children: [
                                                               InkWell(
                                                                 onTap:(){
-                                                              speak(I3name(BoxText));
+                                                              speak(lang?I3name(BoxText):I3nameM(BoxText));
                                                     },
-                                                                child: Text(I3name(BoxText), style: GoogleFonts.lacquer(
+                                                                child: Text(lang?I3name(BoxText):I3nameM(BoxText), style: GoogleFonts.lacquer(
                                                                   fontSize: Cwidgth*0.065,
                                                                   fontWeight: FontWeight.bold,
                                                                   color: Colors.black,
@@ -286,7 +290,7 @@ class _DetailAlpha extends State<ColorDetail> {
                                                     ),),
                                                   InkWell(
                                                     onTap:(){
-                                                      speak(I3name(BoxText));
+                                                      speak(lang?I3name(BoxText):I3nameM(BoxText));
                                                     },
                                                     child: Container( height: Cheight*0.5*0.5*0.65
                                                       , //color: Colors.lightGreen,
@@ -350,14 +354,14 @@ class _DetailAlpha extends State<ColorDetail> {
                                                              ),
                                                            InkWell(
                                                              onTap:(){
-                                                               speak(I1name(BoxText));
+                                                               speak(lang?I1name(BoxText):I1nameM(BoxText));
                                                              },
                                                              child: Container(
                                                                width: Cwidgth*0.5*0.9*0.76,
                                                               // color: Colors.blue,
                                                                  child: Column(  mainAxisAlignment: MainAxisAlignment.end,
                                                                     children: [
-                                                                     Text(I1name(BoxText), style: GoogleFonts.lacquer(
+                                                                     Text(lang?I1name(BoxText):I1nameM(BoxText), style: GoogleFonts.lacquer(
                                                                        fontSize: Cwidgth*0.065,
                                                                        fontWeight: FontWeight.bold,
                                                                        color: Colors.black,
@@ -379,7 +383,7 @@ class _DetailAlpha extends State<ColorDetail> {
                                                      ),),
                                                    InkWell(
                                                      onTap:(){
-                                                       speak(I1name(BoxText));
+                                                       speak(lang?I1name(BoxText):I1nameM(BoxText));
                                                      },
                                                      child: Container( height: Cheight*0.5*0.5*0.65
                                                        , //color: Colors.lightGreen,
@@ -435,14 +439,14 @@ class _DetailAlpha extends State<ColorDetail> {
                                                    ),
                                                    InkWell(
                                                      onTap:(){
-                                                       speak(I2name(BoxText));
+                                                       speak(lang?I2name(BoxText):I2nameM(BoxText));
                                                      },
                                                      child: Container(
                                                        width: Cwidgth*0.5*0.9*0.76,
                                                        // color: Colors.blue,
                                                        child: Column(  mainAxisAlignment: MainAxisAlignment.end,
                                                          children: [
-                                                           Text(I2name(BoxText), style: GoogleFonts.lacquer(
+                                                           Text(lang?I2name(BoxText):I2nameM(BoxText), style: GoogleFonts.lacquer(
                                                              fontSize: Cwidgth*0.065,
                                                              fontWeight: FontWeight.bold,
                                                              color: Colors.black,
@@ -464,7 +468,7 @@ class _DetailAlpha extends State<ColorDetail> {
                                                ),),
                                              InkWell(
                                                onTap:(){
-                                                 speak(I2name(BoxText));
+                                                 speak(lang?I2name(BoxText):I2nameM(BoxText));
                                                },
                                                child: Container( height: Cheight*0.5*0.5*0.65
                                                  , //color: Colors.lightGreen,

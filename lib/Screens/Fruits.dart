@@ -10,11 +10,16 @@ import '../widgets/Button.dart';
 
 
 class Fruits extends StatefulWidget {
+  const Fruits({Key? key, required this.lang,}) : super(key: key);
+  final bool lang;
+
   @override
-  _ColorListState createState() => _ColorListState();
+  _ColorListState createState() => _ColorListState(lang: lang);
 }
 
 class _ColorListState extends State<Fruits> {
+   _ColorListState({Key? key, required this.lang,});
+  final bool lang;
 
   final List<String> FruitsNames = ['apple', 'banana', 'cherry', 'chikoo', 'coconut', 'custard apple', 'grapes', 'guava', 'Jamun', 'orange', 'papaya', 'pineapple', 'pomegranate', 'strawberry', 'watermelon'];
   final PageController _pageController = PageController(initialPage: 0);
@@ -204,9 +209,9 @@ class _ColorListState extends State<Fruits> {
                                    children: [
                                      InkWell(
                                        onTap: (){
-                                         speak(FruitsNames[index]);
+                                         speak(lang?FruitsNames[index]:getName(FruitsNames[index]));
                                        },
-                                       child: Text(FruitsNames[index], style: GoogleFonts.lacquer(
+                                       child: Text(lang?FruitsNames[index]:getName(FruitsNames[index]), style: GoogleFonts.lacquer(
                                          fontSize: cwidth*0.09,
                                          fontWeight: FontWeight.bold,
                                            color: Color.fromARGB(
@@ -224,7 +229,7 @@ class _ColorListState extends State<Fruits> {
                                 children: [
                                     InkWell(
                                       onTap: (){
-                                        speak(FruitsNames[index]);
+                                        speak(lang?FruitsNames[index]:getName(FruitsNames[index]));
                                       },
                                       child: Container(
                                           width: cwidth*0.4,
@@ -271,7 +276,7 @@ class _ColorListState extends State<Fruits> {
 
                                                         child: Padding(
                                                           padding: EdgeInsets.all(cwidth*0.06),
-                                                          child: Text(getInfo(FruitsNames[index]),
+                                                          child: Text(lang?getInfo(FruitsNames[index]):getInfoM(FruitsNames[index]),
                                                             style: TextStyle(fontSize: cwidth*0.06, color: Colors.white),textAlign: TextAlign.center,),
                                                         )
                                                     ),
@@ -284,13 +289,13 @@ class _ColorListState extends State<Fruits> {
                                                          children: [
                                                            Column(
                                                              children: [
-                                                               Button(ButtonText: "Stop", onTap: _stopReading),
+                                                               Button(ButtonText: lang?"Stop":"थांबा", onTap: _stopReading),
                                                              ],
                                                            ),
-                                                           SizedBox(width: cwidth*0.05,),
+                                                           SizedBox(width: lang?cwidth*0.05:cwidth*0.12,),
                                                            Column(
                                                              children: [
-                                                               Button(ButtonText: "Listen", onTap:(){speak(getInfo(FruitsNames[index]));}),
+                                                               Button(ButtonText: lang?"Listen":"ऐका", onTap:(){speak(lang?getInfo(FruitsNames[index]):getInfoM(FruitsNames[index]));}),
                                                              ],
                                                            ),
                                                            SizedBox(width: cwidth*0.8*0.1,),
@@ -317,14 +322,14 @@ class _ColorListState extends State<Fruits> {
                           SizedBox(height: cheight*0.02,),
                           InkWell(
                             onTap: (){
-                              speak(FruitsNames[index]);
+                              speak(lang?FruitsNames[index]:getName(FruitsNames[index]));
                             },
-                            child: Text(FruitsNames[index],
+                            child: Text(lang?FruitsNames[index]:getName(FruitsNames[index]),
                               style: TextStyle(fontSize: cwidth*0.06, fontWeight: FontWeight.bold),),
                           ),
                           //    SizedBox(height: cheight*0.01,),
                           Container(
-                            padding: EdgeInsets.all(16),
+                            padding: EdgeInsets.all(8),
                             child: Text(
                               _speechToText.isListening
                                   ? "listening..."
@@ -411,6 +416,44 @@ String getImage(String AnimalName) {
   }
 }
 
+String getName(String AnimalName) {
+  switch (AnimalName.toLowerCase()) {
+    case 'apple':
+      return "सफरचंद";
+    case 'banana':
+      return "केळी";
+    case 'watermelon':
+      return "टरबूज";
+    case 'pomegranate':
+      return "डाळिंब";
+    case 'cherry':
+      return "चेरी";
+    case 'strawberry':
+      return "स्ट्रॉबेरी";
+    case 'chikoo':
+      return "चिकू";
+    case 'jamun':
+      return "जांभूळ";
+    case 'custard apple':
+      return "सीताफळ";
+    case 'pineapple':
+      return "अननस";
+    case 'coconut':
+      return "नारळ";
+    case 'papaya':
+      return "पपई";
+    case 'orange':
+      return "संत्रा";
+    case 'grapes':
+      return "द्राक्षे";
+    case 'guava':
+      return "पेरू";
+    default:
+      return "पेरू";
+  }
+}
+
+
 String getInfo(String AnimalName) {
   switch (AnimalName.toLowerCase()) {
     case 'apple':
@@ -446,6 +489,42 @@ String getInfo(String AnimalName) {
     default:
       return "Guava is a tasty tropical fruit with green skin and pink or white flesh. Packed with vitamin C, it helps keep us healthy and boosts our immune system.";
   }
+}
+
+String getInfoM(String AnimalName) {
+  switch (AnimalName.toLowerCase()) {
+    case 'apple':
+      return "सफरचंद हे एक स्वादिष्ट फळ आहे जे लाल आणि हिरव्या अशा विविध रंगात येते. हे iPhones, iPads आणि Mac संगणक बनवणाऱ्या प्रसिद्ध कंपनीचे नाव देखील आहे.";
+      case 'banana':
+      return "केळी ही पिवळी फळे आहेत जी मोठ्या झाडांवर वाढतात. ते एक चवदार आणि निरोगी स्नॅक आहेत, पोटॅशियम समृद्ध आहेत, जे आपले हृदय आणि स्नायू मजबूत ठेवण्यास मदत करतात.";
+    case 'watermelon':
+      return "टरबूज हे एक रसाळ फळ आहे जे 92% पाणी आहे, हायड्रेटेड राहण्यासाठी योग्य आहे. त्याचा दोलायमान लाल रंग शक्तिशाली अँटिऑक्सिडंटपासून येतो, ज्यामुळे तो एक चवदार आणि आरोग्यदायी पदार्थ बनतो!";
+    case 'pomegranate':
+      return "डाळिंब ही रसदार फळे असून आतमध्ये लाल बिया असतात. ते केवळ चवदारच नाहीत तर जीवनसत्त्वे आणि अँटिऑक्सिडंट्सने भरलेले आहेत, ज्यामुळे ते निरोगी नाश्ता बनतात";
+    case 'cherry':
+      return "चेरी ही स्वादिष्ट लाल फळे आहेत जी झाडांवर उगवतात. ते गोड, रसाळ आणि जीवनसत्त्वांनी भरलेले असतात, ज्यामुळे ते मुलांसाठी एक चवदार आणि निरोगी नाश्ता बनतात";
+    case 'strawberry':
+      return "स्ट्रॉबेरी हे गोड, लाल बेरी आहेत जे जमिनीच्या जवळ असलेल्या वनस्पतींवर वाढतात. ते केवळ स्वादिष्टच नाहीत तर व्हिटॅमिन सीने देखील भरलेले असतात, ज्यामुळे ते निरोगी आणि चवदार नाश्ता बनतात!";
+    case 'chikoo':
+      return "चिकू, ज्याला सॅपोडिला असेही म्हणतात, हे तपकिरी, खडबडीत त्वचा आणि मऊ, तपकिरी देह असलेले एक गोड आणि रसाळ फळ आहे. वाढत्या मुलांसाठी जीवनसत्त्वे आणि खनिजांनी युक्त हा एक चवदार पदार्थ आहे!";
+    case 'jamun':
+      return "जांभूळ हे एक मधुर जांभळे फळ आहे जे त्याच्या गोड आणि तिखट चवीसाठी ओळखले जाते. ते जीवनसत्त्वे आणि अँटिऑक्सिडंट्सने समृद्ध आहे, मुलांसाठी आरोग्यदायी आणि रंगीबेरंगी स्नॅकला प्रोत्साहन देते.";
+    case 'custard apple':
+      return "कस्टर्ड सफरचंद हे हिरवे, खडबडीत त्वचा असलेले एक गोड आणि मलईदार फळ आहे. लहान मुलांना त्याची स्वादिष्ट चव आवडते आणि काळ्या बियांनी भरलेला मऊ, पांढरा लगदा बाहेर काढण्याचा आनंद घेतो.";
+    case 'pineapple':
+      return "अननस ही उष्णकटिबंधीय फळे आहेत ज्यात काटेरी, खडबडीत बाह्य आणि गोड, रसाळ पिवळे मांस आहे. ते केवळ स्वादिष्टच नाही तर जीवनसत्त्वांनी भरलेले आणि एक चवदार नाश्ता म्हणून देखील आहेत!";
+    case 'coconut':
+      return "नारळ ही मोठी तपकिरी फळे आहेत जी पामच्या झाडांवर उगवतात. त्यांचे बाह्य कवच कठीण असते, मधुर पांढरे मांस असते आणि आतमध्ये नारळाचे पाणी ताजेतवाने असते.";
+    case 'papaya':
+      return "पपई हे एक उष्णकटिबंधीय फळ आहे जे गोड आणि केशरी रंगाचे आहे. त्यात जीवनसत्त्वे, विशेषत: व्हिटॅमिन सी, जे आपल्याला निरोगी ठेवण्यास मदत करते";
+    case 'orange':
+      return "संत्री ही रसाळ फळे आहेत जी व्हिटॅमिन सीचा एक उत्तम स्रोत आहेत, तुम्हाला निरोगी ठेवण्यास मदत करतात. त्यांचा रंग चमकदार नारिंगी आणि मुलांना आवडतो अशी गोड चव आहे";
+    case 'grapes':
+      return "द्राक्षे ही लहान, रसाळ फळे आहेत जी लाल, हिरवी आणि जांभळ्या सारख्या विविध रंगात येतात. ते केवळ स्वादिष्टच नाहीत तर निरोगी स्नॅकसाठी जीवनसत्त्वे आणि अँटिऑक्सिडंट्सने भरलेले असतात!";
+    case 'guava':
+      return "पेरू हे हिरवी त्वचा आणि गुलाबी किंवा पांढरे मांस असलेले एक चवदार उष्णकटिबंधीय फळ आहे. व्हिटॅमिन सीने भरलेले, ते आपल्याला निरोगी ठेवण्यास मदत करते आणि आपली रोगप्रतिकारक शक्ती वाढवते.";
+    default:
+      return "पेरू हे हिरवी त्वचा आणि गुलाबी किंवा पांढरे मांस असलेले एक चवदार उष्णकटिबंधीय फळ आहे. व्हिटॅमिन सीने भरलेले, ते आपल्याला निरोगी ठेवण्यास मदत करते आणि आपली रोगप्रतिकारक शक्ती वाढवते.";  }
 }
 
 // String getString(String AnimalName) {

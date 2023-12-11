@@ -10,7 +10,7 @@ class ColorBox extends StatelessWidget {
     required this.colorboxText,
     required this.color,
     required this.bcolor,
-    required this.flag,
+    required this.flag, required this.lang,
   })
       : super(key: key);
 
@@ -18,6 +18,7 @@ class ColorBox extends StatelessWidget {
   final Color color;
   final Color bcolor;
   final bool flag;
+  final bool lang;
   FlutterTts flutterTts = FlutterTts();
 
   Future<void> initTts() async {
@@ -43,7 +44,7 @@ class ColorBox extends StatelessWidget {
         speak(colorboxText);
       },
         onLongPress: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ColorDetail(BoxText: colorboxText, color : color, flag: Iflag(colorboxText),)));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ColorDetail(BoxText: colorboxText, color : color, flag: Iflag(colorboxText), lang: lang,)));
         },
       onDoubleTap: (){},
       child: Container(

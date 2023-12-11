@@ -6,13 +6,17 @@ import 'package:vachanapp/widgets/numberBox.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 class NumberDetail extends StatefulWidget{
-
+  const NumberDetail({Key? key, required this.lang,}): super(key: key);
+  final bool lang;
   @override
-  NumberD createState() => NumberD();
+  NumberD createState() => NumberD(lang: lang);
 }
 
 class NumberD extends State<NumberDetail> with TickerProviderStateMixin{
-
+   NumberD({Key? key,
+    required this.lang,
+  });
+   final bool lang;
   FlutterTts flutterTts = FlutterTts();
 
   Future<void> initTts() async {
@@ -463,71 +467,71 @@ class NumberD extends State<NumberDetail> with TickerProviderStateMixin{
                                         Row(
                                           children: [InkWell
                                             ( onTap: (){
-                                            speak("1 water drop is falling");
+                                            speak(lang?"1 water drop is falling":"एक पाण्याचे थेंब पडत आहेत");
                                             _showContainers(1);
                                             _startFallingAnimation();
 
                                           //  print(_containersVisible2);
 
                                           },    onLongPress: (){
-                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "1")));
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: lang?"1":"१", lang: lang,)));
                                           },
-                                              child: NumberBox(MidBoxText: "1", flag: true, rl: false,)),],),
+                                              child: NumberBox(MidBoxText: lang?"1":"१", flag: true, rl: false,)),],),
                                       SizedBox(height:  Cheight*0.82*0.02,),
                                       Row(children: [InkWell   ( onTap: (){
-                                        speak("2 water drops are falling");
+                                        speak(lang?"2 water drops are falling":"दोन पाण्याचे थेंब पडत आहेत");
                                         _showContainers(2);
                                         _startFallingAnimation();
                                        // print(_containersVisible);
 
                                       },  onLongPress: (){
-                                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "2")));
+                                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: lang?"2":"२",  lang: lang,)));
                                       },
-                                      child: NumberBox(MidBoxText: "2", flag: true, rl: false,)),],),
+                                      child: NumberBox(MidBoxText: lang?"2":"२", flag: true, rl: false,)),],),
                                       SizedBox(height:  Cheight*0.82*0.02,),
                                       Row(children: [InkWell(
                                          onTap: (){
-                                           speak("3 water drops are falling");
+                                           speak(lang?"3 water drops are falling":"तीन पाण्याचे थेंब पडत आहेत");
                                           _showContainers(3);
                                           _startFallingAnimation();
                                         //  print(_containersVisible);
                                          },   onLongPress: (){
-                                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "3")));
+                                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: lang?"3":"३",  lang: lang,)));
                                       },
-                                        child: NumberBox(MidBoxText: "3", flag: true, rl: false,)),],),
+                                        child: NumberBox(MidBoxText: lang?"3":"३", flag: true, rl: false,)),],),
                                       SizedBox(height:  Cheight*0.82*0.4,),
                                       Row(children: [InkWell(
                                           onTap: (){
-                                            speak("7 water drops are falling");
+                                            speak(lang?"7 water drops are falling":"सात पाण्याचे थेंब पडत आहेत");
                                             _showContainers(7);
                                             _startFallingAnimation();
                                             //  print(_containersVisible);
 
                                           },
                                           onLongPress: (){
-                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "7")));
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: lang?"7":"७",  lang: lang,)));
                                           },
-                                          child: NumberBox(MidBoxText: "7", flag: false, rl: false,)),],),
+                                          child: NumberBox(MidBoxText: lang?"7":"७", flag: false, rl: false,)),],),
                                       SizedBox(height:  Cheight*0.82*0.02,),
                                       Row(children: [InkWell(
                                           onTap: (){
-                                            speak("8 water drops are falling");
+                                            speak(lang?"8 water drops are falling":"आठ पाण्याचे थेंब पडत आहेत");
                                             _showContainers(8);
                                             _startFallingAnimation();
                                             //  print(_containersVisible);
 
                                           },
                                           onLongPress: (){
-                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "8")));
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: lang?"8":"८",  lang: lang,)));
                                           },
-                                          child: NumberBox(MidBoxText: "8", flag: false, rl: false,)),],),
+                                          child: NumberBox(MidBoxText: lang?"8":"८", flag: false, rl: false,)),],),
                                       SizedBox(height:  Cheight*0.82*0.18,),
                                       Row(children: [InkWell(
                                           onTap:(){
-                                              speak("No water drops are falling");
+                                              speak(lang?"No water drops are falling":"पाण्याचा थेंबही पडत नाही");
                                            },
                                           onLongPress: (){
-                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "0")));
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "0",  lang: lang,)));
                                           },
                                           child: NumberBox(MidBoxText: "0", flag: true, rl: false,)),],),
                                     ],
@@ -576,28 +580,28 @@ class NumberD extends State<NumberDetail> with TickerProviderStateMixin{
                                                                         builder: (context, child) {
                                                                           return Transform.translate(
                                                                             offset: Offset(0, MediaQuery.of(context).size.height * _animation10.value),
-                                                                            child: TenDrop(DropText: "10", four: true,),);},),
+                                                                            child: TenDrop(DropText: lang?"10":"१0", four: true, lang: lang,),);},),
                                                                     if (_containersVisible7)
                                                                       AnimatedBuilder(
                                                                         animation: _animation7,
                                                                         builder: (context, child) {
                                                                           return Transform.translate(
                                                                             offset: Offset(0, MediaQuery.of(context).size.height * _animation7.value),
-                                                                            child: SmallDrop(DropText: "7", four: false,),);},),
+                                                                            child: SmallDrop(DropText: lang?"7":"७", four: false, lang: lang,),);},),
                                                                     if (_containersVisible4)
                                                                       AnimatedBuilder(
                                                                         animation: _animation4,
                                                                         builder: (context, child) {
                                                                           return Transform.translate(
                                                                             offset: Offset(0, MediaQuery.of(context).size.height * _animation4.value),
-                                                                            child: SmallDrop(DropText: "4", four: true,),);},),
+                                                                            child: SmallDrop(DropText: lang?"4":"४", four: true, lang: lang,),);},),
                                                                     if (_containersVisible2)
                                                                       AnimatedBuilder(
                                                                         animation: _animation2,
                                                                         builder: (context, child) {
                                                                           return Transform.translate(
                                                                             offset: Offset(0, MediaQuery.of(context).size.height * _animation2.value),
-                                                                            child: SmallDrop(DropText: "2", four: false,),);},),
+                                                                            child: SmallDrop(DropText: lang?"2":"२", four: false, lang: lang,),);},),
 
                                                                   ]),
                                                                // SizedBox(width: 20),
@@ -610,21 +614,21 @@ class NumberD extends State<NumberDetail> with TickerProviderStateMixin{
                                                                         builder: (context, child) {
                                                                           return Transform.translate(
                                                                             offset: Offset(0, MediaQuery.of(context).size.height * _animation8.value),
-                                                                            child: SmallDrop(DropText: "8", four: false,),);},),
+                                                                            child: SmallDrop(DropText: lang?"8":"८", four: false, lang: lang,),);},),
                                                                     if (_containersVisible5)
                                                                       AnimatedBuilder(
                                                                         animation: _animation5,
                                                                         builder: (context, child) {
                                                                           return Transform.translate(
                                                                             offset: Offset(0, MediaQuery.of(context).size.height * _animation5.value),
-                                                                            child: SmallDrop(DropText: "5", four: false,),);},),
+                                                                            child: SmallDrop(DropText: lang?"5":"५", four: false, lang: lang,),);},),
                                                                     if (_containersVisible)
                                                                       AnimatedBuilder(
                                                                         animation: _animation1,
                                                                         builder: (context, child) {
                                                                           return Transform.translate(
                                                                             offset: Offset(0, MediaQuery.of(context).size.height * _animation1.value),
-                                                                            child: SmallDrop(DropText: "1", four: false,),);},),
+                                                                            child: SmallDrop(DropText: lang?"1":"१", four: false, lang: lang,),);},),
 
                                                                ] ),
                                                                 Stack(
@@ -636,21 +640,21 @@ class NumberD extends State<NumberDetail> with TickerProviderStateMixin{
                                                                         builder: (context, child) {
                                                                           return Transform.translate(
                                                                             offset: Offset(0, MediaQuery.of(context).size.height * _animation9.value),
-                                                                            child: SmallDrop(DropText: "9", four: false,),);},),
+                                                                            child: SmallDrop(DropText: lang?"9":"९", four: false, lang: lang,),);},),
                                                                     if (_containersVisible6)
                                                                       AnimatedBuilder(
                                                                         animation: _animation6,
                                                                         builder: (context, child) {
                                                                           return Transform.translate(
                                                                             offset: Offset(0, MediaQuery.of(context).size.height * _animation6.value),
-                                                                            child: SmallDrop(DropText: "6", four: false,),);},),
+                                                                            child: SmallDrop(DropText: lang?"6":"६", four: false,lang: lang,),);},),
                                                                     if (_containersVisible3)
                                                                       AnimatedBuilder(
                                                                         animation: _animation3,
                                                                         builder: (context, child) {
                                                                           return Transform.translate(
                                                                             offset: Offset(0, MediaQuery.of(context).size.height * _animation3.value),
-                                                                            child: SmallDrop(DropText: "3", four: false,),);},),
+                                                                            child: SmallDrop(DropText: lang?"3":"३", four: false,lang: lang,),);},),
 
                                                                   ]),
                                                               ],),
@@ -665,29 +669,29 @@ class NumberD extends State<NumberDetail> with TickerProviderStateMixin{
                                                  Row(mainAxisAlignment: MainAxisAlignment.end,
                                                    children: [InkWell(
                                                      onTap: (){
-                                                       speak("4 water drops are falling");
+                                                       speak(lang?"4 water drops are falling":"चार पाण्याचे थेंब पडत आहेत");
                                                        _showContainers(4);
                                                        _startFallingAnimation();
                                                        print(_containersVisible);
 
                                                      },  onLongPress: (){
-                                                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "4")));
+                                                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: lang?"4":"४",  lang: lang,)));
                                                    },
-                                                     child: NumberBox(MidBoxText: "4", flag: true, rl: true,)),],),
+                                                     child: NumberBox(MidBoxText: lang?"4":"४", flag: true, rl: true,)),],),
                                                      SizedBox(height:  Cheight*0.82*0.02*0.85,),
                                                       Row(  mainAxisAlignment:MainAxisAlignment.end,
                                                         children: [
                                                           InkWell(
                                                               onTap: (){
-                                                                speak("5 water drops are falling");
+                                                                speak(lang?"5 water drops are falling":"पाच पाण्याचे थेंब पडत आहेत");
                                                                 _showContainers(5);
                                                                 _startFallingAnimation();
                                                               //  print(_containersVisible);
 
                                                               },
-                                                              child: NumberBox(MidBoxText: "5", flag: true, rl: true,),
+                                                              child: NumberBox(MidBoxText: lang?"5":"५", flag: true, rl: true,),
                                                             onLongPress: (){
-                                                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "5")));
+                                                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: lang?"5":"५",  lang: lang,)));
                                                             },),
                                                         ],
                                                       ),
@@ -697,16 +701,16 @@ class NumberD extends State<NumberDetail> with TickerProviderStateMixin{
                                                          children: [
                                                          InkWell(
                                                              onTap: (){
-                                                               speak("6 water drops are falling");
+                                                               speak(lang?"6 water drops are falling":"सहा पाण्याचे थेंब पडत आहेत");
                                                                _showContainers(6);
                                                                _startFallingAnimation();
                                                                //  print(_containersVisible);
 
                                                              },
 
-                                                             child: NumberBox(MidBoxText: "6", flag: true, rl: true,),
+                                                             child: NumberBox(MidBoxText: lang?"6":"६", flag: true, rl: true,),
                                                            onLongPress: (){
-                                                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "6")));
+                                                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: lang?"6":"६",  lang: lang,)));
                                                            },),
                                                        ],
                                                      ),
@@ -715,30 +719,30 @@ class NumberD extends State<NumberDetail> with TickerProviderStateMixin{
                                                        children:
                                                      [InkWell(
                                                          onTap: (){
-                                                           speak("9 water drops are falling");
+                                                           speak(lang?"9 water drops are falling":"नऊ पाण्याचे थेंब पडत आहेत");
                                                            _showContainers(9);
                                                            _startFallingAnimation();
                                                            //  print(_containersVisible);
 
                                                          },
                                                          onLongPress: (){
-                                                           Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "9")));
+                                                           Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: lang?"9":"९",  lang: lang,)));
                                                          },
-                                                         child: NumberBox(MidBoxText: "9", flag: false, rl: true,)),],),
+                                                         child: NumberBox(MidBoxText: lang?"9":"९", flag: false, rl: true,)),],),
                                                      SizedBox(height:  Cheight*0.82*0.02*0.85,),
                                                      Row( mainAxisAlignment: MainAxisAlignment.end,
                                                        children: [InkWell(
                                                          onTap: (){
-                                                           speak("10 water drops are falling");
+                                                           speak(lang?"10 water drops are falling":"दहा पाण्याचे थेंब पडत आहेत");
                                                            _showContainers(10);
                                                            _startFallingAnimation();
                                                            //  print(_containersVisible);
 
                                                          },
                                                            onLongPress: (){
-                                                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: "10")));
+                                                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => NumDetail(BoxText: lang?"10":"१0",  lang: lang,)));
                                                            },
-                                                         child: NumberBox(MidBoxText: "10", flag: false, rl: true,)),],),
+                                                         child: NumberBox(MidBoxText: lang?"10":"१0", flag: false, rl: true,)),],),
                                                    ],
                                                  ),
                                                )],),)],),),],),),
@@ -756,7 +760,7 @@ class NumberD extends State<NumberDetail> with TickerProviderStateMixin{
                                   child: Padding(
                                    padding: const EdgeInsets.all(2.0),
                                     child: Text(
-                                     "More Numbers",
+                                     lang?"More Numbers":"अधिक संख्या",
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize:Cwidgth * 0.06,

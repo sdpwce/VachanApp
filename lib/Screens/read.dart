@@ -7,7 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 
 class ReadPage extends StatelessWidget {
-
+  const ReadPage({Key? key, required this.lang,}) : super(key: key);
+  final bool lang;
   @override
   Widget build(BuildContext context) {
     var cwidgth = MediaQuery.of(context).size.width;
@@ -41,7 +42,7 @@ class ReadPage extends StatelessWidget {
                               child: Container(
                                 width: cwidgth*1.2,
                                 child: Center(
-                                    child: Text("Alphabet Reading", style: GoogleFonts.lacquer(
+                                    child: Text(lang?"Alphabet Reading":"वर्णमाला वाचन", style: GoogleFonts.lacquer(
                                       fontSize: cwidgth*0.1,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,
@@ -71,7 +72,7 @@ class ReadPage extends StatelessWidget {
                        InkWell(
                              onTap: (){ Navigator.push(
                                context,
-                               MaterialPageRoute(builder: (context) => Number(),
+                               MaterialPageRoute(builder: (context) => Number(lang: lang,),
                              ));},
                              child: Container(
 
@@ -83,12 +84,12 @@ class ReadPage extends StatelessWidget {
                              onTap: (){
                                Navigator.push(
                                    context,
-                                   MaterialPageRoute(builder: (context) => Number(),));
+                                   MaterialPageRoute(builder: (context) => Number(lang: lang),));
                              },
                              child: Container(
                                width: cwidgth*1.2,
                                child: Center(
-                                   child: Text("Number Reading", style: GoogleFonts.lacquer(
+                                   child: Text(lang?"Number Reading":"संख्या वाचन", style: GoogleFonts.lacquer(
                                        fontSize: cwidgth*0.1,
                                        fontWeight: FontWeight.bold,
                                    ),textAlign: TextAlign.center,)),

@@ -4,13 +4,15 @@ import 'package:vachanapp/Screens/Alphabate.dart';
 import 'package:vachanapp/Screens/Words.dart';
 import 'package:vachanapp/Screens/read.dart';
 
+import '../Screens/Craft.dart';
 import '../Screens/NumberDetail.dart';
 import '../Screens/knowlege.dart';
 import '../stt.dart';
 
 
 class Window extends StatelessWidget {
-  const Window({Key? key,}) : super(key: key);
+  const Window({Key? key, required this.lang,}) : super(key: key);
+  final bool lang;
 
   Widget build(BuildContext context) {
     var Cwidgth = MediaQuery.of(context).size.height * 0.38;
@@ -52,7 +54,7 @@ class Window extends StatelessWidget {
                   onTap: (){
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ReadPage()),
+                      MaterialPageRoute(builder: (context) => ReadPage(lang: lang,)),
                     );
                   },
                   child: Padding(
@@ -71,7 +73,7 @@ class Window extends StatelessWidget {
                           ],
                           color:    const Color.fromARGB(255, 211, 232, 239)),
                       child: Center(
-                        child: Text("Basic Reading", style: GoogleFonts.lacquer(
+                        child: Text(lang?"Basic Reading":"मूलभूत वाचन", style: GoogleFonts.lacquer(
                               fontSize: Cwidgth*0.125
                         ),textAlign: TextAlign.center,),
                       ),
@@ -83,7 +85,7 @@ class Window extends StatelessWidget {
                   onTap: (){
                     Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => KnowPage()));
+                        MaterialPageRoute(builder: (context) => KnowPage(lang: lang,)));
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(6.0),
@@ -108,7 +110,7 @@ class Window extends StatelessWidget {
                                 child: Image.asset('images/brain.png')),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Text("knowledge", style: GoogleFonts.lacquer(
+                              child: Text(lang?"knowledge":"मूलभूत ज्ञान", style: GoogleFonts.lacquer(
                                   fontSize: Cwidgth*0.08,
                                 color: Color.fromARGB(255, 23, 120, 128),
                               ),textAlign: TextAlign.center, ),
@@ -121,35 +123,42 @@ class Window extends StatelessWidget {
               ],),
               Row( children: [
                 SizedBox(width: Cheight*0.026,),
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Container(
-                    width: Cwidgth*0.9*0.46,
-                    height: Cheight*0.9*0.55,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0), // Adjust the radius to control the curve.
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black38, // Shadow color
-                            offset: Offset(0, 2), // Offset of the shadow
-                            blurRadius: 15.0, // Spread of the shadow
-                          ),
+                InkWell(
+                  onTap: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => CraftPage(lang: lang,)));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Container(
+                      width: Cwidgth*0.9*0.46,
+                      height: Cheight*0.9*0.55,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0), // Adjust the radius to control the curve.
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black38, // Shadow color
+                              offset: Offset(0, 2), // Offset of the shadow
+                              blurRadius: 15.0, // Spread of the shadow
+                            ),
+                          ],
+                          color:    const Color.fromARGB(255, 211, 232, 239)),
+                      child: Column(
+                        children: [
+                          Container(
+                              width: Cwidgth*0.9*0.46*0.9,
+                              height: Cwidgth*0.9*0.46*0.8,
+                              child: Image.asset('images/origami.png')),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(lang?"Crafts":"हस्तकला", style: GoogleFonts.lacquer(
+                              fontSize: Cwidgth*0.08,
+                              color: Color.fromARGB(255, 23, 120, 128),
+                            ),textAlign: TextAlign.center, ),
+                          )
                         ],
-                        color:    const Color.fromARGB(255, 211, 232, 239)),
-                    child: Column(
-                      children: [
-                        Container(
-                            width: Cwidgth*0.9*0.46*0.9,
-                            height: Cwidgth*0.9*0.46*0.8,
-                            child: Image.asset('images/book.png')),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text("paragraph", style: GoogleFonts.lacquer(
-                            fontSize: Cwidgth*0.08,
-                            color: Color.fromARGB(255, 23, 120, 128),
-                          ),textAlign: TextAlign.center, ),
-                        )
-                      ],
+                      ),
                     ),
                   ),
                 ),
@@ -175,7 +184,7 @@ class Window extends StatelessWidget {
                           ],
                           color:   const Color.fromARGB(255, 211, 232, 239)),
                       child: Center(
-                        child: Text("Words Reading", style: GoogleFonts.lacquer(
+                        child: Text(lang?"Words Reading":"शब्द वाचन", style: GoogleFonts.lacquer(
                             fontSize: Cwidgth*0.125
                         ),textAlign: TextAlign.center,),
                       ),

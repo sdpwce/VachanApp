@@ -5,14 +5,18 @@ import 'package:vachanapp/widgets/Window.dart';
 class MainPage extends StatefulWidget{
 
 
-  const MainPage({Key? key,}): super(key: key);
-
+  const MainPage({Key? key, required this.lang,}): super(key: key);
+  final bool lang;
   @override
-  _MainScreen createState() => _MainScreen();
+  _MainScreen createState() => _MainScreen(lang: this.lang);
 }
 
 class _MainScreen extends State<MainPage> {
+  _MainScreen({Key? key,
+    required this.lang,
+  });
 
+  final bool lang;
   @override
   Widget build(BuildContext context) {
     var Cwidgth = MediaQuery.of(context).size.width*0.38;
@@ -53,7 +57,7 @@ class _MainScreen extends State<MainPage> {
                 child: Column(
                      children: [
                        SizedBox(height: Cheight*0.2,),
-                       Window(),
+                       Window(lang: lang,),
                        SizedBox(height: Cheight*0.15,),
                        Row(
                          mainAxisAlignment: MainAxisAlignment.start,

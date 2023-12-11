@@ -9,22 +9,23 @@ import 'dart:async';
 import '../detailC.dart';
 class NumDetail extends StatefulWidget {
   const NumDetail({Key? key,
-    required this.BoxText,
+    required this.BoxText, required this.lang,
   })
       : super(key: key);
-
+  final bool lang;
   final String BoxText;
-  _DetailAlpha createState() => _DetailAlpha(BoxText: BoxText,);
+  _DetailAlpha createState() => _DetailAlpha(BoxText: BoxText, lang: lang);
 
 }
 
 class _DetailAlpha extends State<NumDetail> {
 
   // stt.SpeechToText speech = stt.SpeechToText();
-  _DetailAlpha({Key? key,
+  _DetailAlpha(  {Key? key,
     required this.BoxText,
+    required this.lang,
   });
-
+  final bool lang;
   final String BoxText;
   FlutterTts flutterTts = FlutterTts();
 
@@ -94,17 +95,17 @@ class _DetailAlpha extends State<NumDetail> {
   void checkStrings() {
 
     if ( _wordsSpoken.toLowerCase() == _words.toLowerCase()) {
-      showResult('Correct', Colors.green);
+      showResult(lang?'Right':'बरोबर', Colors.green);
       one++;
       if(one > 0){
-        speak("correct");
+        speak(lang?'Right':'बरोबर');
       }
 
     } else {
       one++;
-      showResult('Incorrect', Colors.red);
+      showResult(lang?'Wrong':'चुकीचे', Colors.red);
       if(one == 10){
-        speak("Incorrect");
+        speak(lang?'Wrong':'चुकीचे');
       }
 
     }
@@ -134,7 +135,7 @@ class _DetailAlpha extends State<NumDetail> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: _speechToText.isListening ? _stopListening : _startListening,
-        tooltip: 'Listen',
+        tooltip: lang?'Listen':'ऐका',
         child: Icon(
           _speechToText.isNotListening ? Icons.mic_off : Icons.mic,
           color: Colors.white,
@@ -162,6 +163,8 @@ class _DetailAlpha extends State<NumDetail> {
                     onTap: (){
                       if(BoxText == "1")
                         speak(BoxText + "finger");
+                      if(lang == false)
+                        speak(getNamem(BoxText) + "बोट");
                       else
                         speak(BoxText + 'fingers');
                     },
@@ -170,7 +173,7 @@ class _DetailAlpha extends State<NumDetail> {
                           height: Cheight*0.25,
                           width: Cwidgth*0.8,
                        // color: Colors.red,
-                         child: Image.asset(getImage(BoxText),  height: double.infinity,  // Adjust height as needed
+                         child: Image.asset(lang?getImage(BoxText):getImagem(BoxText),  height: double.infinity,  // Adjust height as needed
                            width: double.infinity,   // Adjust width as needed
                            fit: BoxFit.contain,   ),
                       ),
@@ -183,9 +186,9 @@ class _DetailAlpha extends State<NumDetail> {
                     Container(
                       child: InkWell(
                         onTap: (){
-                          speak(BoxText);
+                          speak(lang?BoxText:getNamem(BoxText));
                         },
-                        child: Text(getName(BoxText), style: GoogleFonts.lacquer(
+                        child: Text(lang?getName(BoxText):getNamem(BoxText), style: GoogleFonts.lacquer(
                           fontSize: Cwidgth*0.12,
                           fontWeight: FontWeight.bold,
                           //   color: Color.fromARGB(255, 23, 120, 128),
@@ -196,7 +199,7 @@ class _DetailAlpha extends State<NumDetail> {
                     Container(
                       child: InkWell(
                         onTap: (){
-                            speak(getName(BoxText));
+                            speak(lang?getName(BoxText):getNamem(BoxText));
                         },
                         child: Text(BoxText, style: GoogleFonts.lacquer(
                           fontSize: Cwidgth*0.12,
@@ -210,9 +213,9 @@ class _DetailAlpha extends State<NumDetail> {
                 SizedBox(height: Cheight*0.2,),
                 InkWell(
                   onTap: (){
-                    speak(BoxText);
+                    lang?speak(BoxText):speak(getNamem(BoxText));
                   },
-                  child: Text(getName(BoxText),
+                  child: Text(lang?getName(BoxText):getNamem(BoxText),
                     style: TextStyle(fontSize: Cwidgth*0.06, fontWeight: FontWeight.bold),),
                 ),
                 Container(
@@ -254,6 +257,65 @@ class _DetailAlpha extends State<NumDetail> {
   }
 }
 
+String getImagem(String number) {
+  switch (number) {
+    case '0':
+      return "images/0f.jpg";
+    case '१':
+      return "images/1f.jpg";
+    case '२':
+      return "images/10.jpg";
+    case '३':
+      return "images/3f.jpg";
+    case '४':
+      return "images/4f.jpg";
+    case '५':
+      return "images/5f.jpg";
+    case '६':
+      return "images/6f.jpg";
+    case '७':
+      return "images/7f.jpg";
+    case '८':
+      return "images/8f.jpg";
+    case '९':
+      return "images/9f.jpg";
+    case '१0':
+      return "images/10f.jpg";
+    default:
+      return "images/10f.jpg";
+
+  }
+}
+
+String getNamem(String number) {
+  switch (number) {
+    case '0':
+      return "शून्य";
+    case '१':
+      return "एक";
+    case '२':
+      return "दोन";
+    case '३':
+      return "तीन";
+    case '४':
+      return "चार";
+    case '५':
+      return "पाच";
+    case '६':
+      return "सहा";
+    case '७':
+      return "सात";
+    case '८':
+      return "आठ";
+    case '९':
+      return "नऊ";
+    case '१0':
+      return "दहा";
+    default:
+      return "दहा";
+
+  }
+}
 String getImage(String number) {
   switch (number.toLowerCase()) {
     case '0':
@@ -285,7 +347,7 @@ String getImage(String number) {
 }
 
 String getName(String number) {
-  switch (number.toLowerCase()) {
+  switch (number) {
     case '0':
       return "zero";
     case '1':

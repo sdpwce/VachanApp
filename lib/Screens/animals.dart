@@ -10,11 +10,22 @@ import '../widgets/Button.dart';
 
 
 class Animals extends StatefulWidget {
+  const Animals({Key? key,
+    required this.lang,
+    //  required this.fontSize,
+  })
+      : super(key: key);
+  final bool lang;
   @override
-  _ColorListState createState() => _ColorListState();
+  _ColorListState createState() => _ColorListState(lang: lang);
 }
 
 class _ColorListState extends State<Animals> {
+  _ColorListState( {Key? key,
+    required this.lang,
+  });
+
+  final bool lang;
 
   final List<String> AnimalsNames = ['Bear', 'Buffalo', 'Camel', 'Cat', 'Cow', 'Deer', 'Dog', 'Donkey', 'Elephant', 'Fox',  'Giraffe', 'Goat', 'Horse', 'Kangaroo', 'Leopard', 'Lion', 'Mongoose', 'Monkey', 'Pig', 'Rhinoceros', 'Sheep', 'Squirrel', 'Tiger', 'Wolf', 'Yac', 'Zebra'];
 
@@ -205,7 +216,7 @@ class _ColorListState extends State<Animals> {
                               SizedBox(height:  cheight*0.4 * 0.08 ,),
                               InkWell(
                                 onTap: (){
-                                    speak(AnimalsNames[index]);
+                                    speak(lang?AnimalsNames[index]:getName(AnimalsNames[index]));
                                 },
                                 child: Container(
                                     height: cheight*0.4*0.5,
@@ -226,10 +237,10 @@ class _ColorListState extends State<Animals> {
                               SizedBox(height:  cheight*0.4 * 0.05 ,),
                               InkWell(
                                 onTap: (){
-                                  speak(AnimalsNames[index]);
+                                  speak(lang?AnimalsNames[index]: getName(AnimalsNames[index]));
                                 },
                                 child: Container(
-                                  child: Text(AnimalsNames[index], style: GoogleFonts.lacquer(
+                                  child: Text(lang?AnimalsNames[index]: getName(AnimalsNames[index]), style: GoogleFonts.lacquer(
                                     fontSize: cwidth*0.09,
                                     fontWeight: FontWeight.bold,
                                     //   color: Color.fromARGB(255, 23, 120, 128),
@@ -251,8 +262,8 @@ class _ColorListState extends State<Animals> {
                                     flex: 2,
                                     child: Container(height: cheight*0.3*0.5,
                                     //color: Colors.white,
-                                       child: Text(getInfo(AnimalsNames[index]),
-              style: TextStyle(fontSize: cwidth*0.055),textAlign: TextAlign.center,)
+                                       child: Text(lang?getInfo(AnimalsNames[index]):getInfoM(AnimalsNames[index]), ////////////===================
+              style: TextStyle(fontSize: lang?cwidth*0.055:cwidth*0.048),textAlign: TextAlign.center,)
                                      ,),
                                   ),
                                   Expanded(
@@ -263,13 +274,13 @@ class _ColorListState extends State<Animals> {
                                            children: [
                                              Column(
                                                children: [
-                                                 Button(ButtonText: "Stop Listen", onTap: _stopReading),
+                                                 Button(ButtonText: lang?"Stop Listen":"ऐकणे थांबवा", onTap: _stopReading),
                                                ],
                                              ),
                                              SizedBox(width: cwidth*0.01,),
                                              Column(
                                                children: [
-                                                 Button(ButtonText: "Listen", onTap:(){speak(getInfo(AnimalsNames[index]));}),
+                                                 Button(ButtonText: lang?"Listen":"ऐका", onTap:(){speak(lang?getInfo(AnimalsNames[index]):getInfoM(AnimalsNames[index]));}),
                                                ],
                                              ),
                                              SizedBox(width: cwidth*0.8*0.1,),
@@ -282,9 +293,9 @@ class _ColorListState extends State<Animals> {
                         // SizedBox(height: cheight*0.005,),
                         InkWell(
                           onTap: (){
-                            speak(AnimalsNames[index]);
+                            speak(lang?AnimalsNames[index]:getName(AnimalsNames[index]));
                           },
-                          child: Text(AnimalsNames[index],
+                          child: Text(lang?AnimalsNames[index]:getName(AnimalsNames[index]),
                                     style: TextStyle(fontSize: cwidth*0.06, fontWeight: FontWeight.bold),),
                         ),
                     //    SizedBox(height: cheight*0.01,),
@@ -450,6 +461,66 @@ String getString(String AnimalName) {
   }
 }
 
+String getName(String AnimalName) {
+  switch (AnimalName.toLowerCase()) {
+    case 'bear':
+      return "अस्वल";
+    case 'buffalo':
+      return "म्हैस";
+    case 'camel':
+      return "उंट";
+    case 'cat':
+      return "मांजर";
+    case 'cow':
+      return "गाय";
+    case 'deer':
+      return "हरिण";
+    case 'dog':
+      return "कुत्रा";
+    case 'donkey':
+      return "गाढव";
+    case 'elephant':
+      return "हत्ती";
+    case 'fox':
+      return "कोल्हा,";
+    case 'giraffe':
+      return "जिराफ";
+    case 'goat':
+      return "बकरी";
+    case 'horse':
+      return "घोडा";
+    case 'kangaroo':
+      return "कांगारू";
+    case 'leopard':
+      return "चित्ता";
+    case 'lion':
+      return "सिंह";
+    case 'mongoose':
+      return "मुंगूस";
+    case 'monkey':
+      return "माकड";
+    case 'pig':
+      return "डुक्कर,";
+    case 'rhinoceros':
+      return "गेंडा";
+    case 'sheep':
+      return "मेंढी";
+    case 'squirrel':
+      return "गिलहरी,";
+    case 'tiger':
+      return "वाघ";
+    case 'wolf':
+      return "लांडगा";
+    case 'yac':
+      return "यॅक";
+    case 'zebra':
+      return "झेब्रा";
+    default:
+      return "यॅक";
+  }
+}
+
+
 String getInfo(String AnimalName) {
   switch (AnimalName.toLowerCase()) {
     case 'bear':
@@ -546,6 +617,67 @@ String getInfo(String AnimalName) {
       return "Yaks are furry, high-altitude mammals found in the Himalayas. "
           "They have long horns, thick coats, and are often used by people "
           "for transportation and as a source of milk and wool.";
+  }
+}
+
+String getInfoM(String AnimalName) {
+  switch (AnimalName.toLowerCase()) {
+    case 'bear':
+      return "अस्वल हे मोठे, केसाळ सस्तन प्राणी आहेत ज्यांना मासे, बेरी आणि मध खायला आवडतात. ते ध्रुवीय अस्वलासारखे काळे किंवा पांढरे असू शकतात.";
+    case 'buffalo':
+      return  "म्हशी जाड, शेगडी फर आणि वक्र शिंगे असलेले मोठे, शक्तिशाली सस्तन प्राणी आहेत. ते सहसा कळप नावाच्या गटात राहतात आणि गवतावर चरण्याच्या त्यांच्या प्रेमासाठी ओळखले जातात.";
+    case 'camel':
+      return "उंट हे कुबड्या असलेले वाळवंटी प्राणी आहेत जे त्यांना उष्ण हवामानात टिकून राहण्यासाठी पाणी साठवून ठेवतात. त्यांचे पाय लांब आणि जाड फर असतात "
+          "त्यांना सूर्यापासून वाचवा.";
+    case 'cat':
+      return  "मांजरी हे केसाळ प्राणी आहेत जे जेव्हा आनंदी असतात तेव्हा ते कुरकुरतात. ते अन्वेषण करण्यासाठी त्यांच्या व्हिस्कर्सचा वापर करतात आणि चढण्यासाठी आणि खेळण्यासाठी तीक्ष्ण पंजे असतात.";
+    case 'cow':
+      return "गायी हे दूध देणारे सौम्य शेतातील प्राणी आहेत. त्यांना चार पोटे असतात आणि पचनास मदत करण्यासाठी त्यांना चघळतात.";
+    case 'dog':
+      return "कुत्रे हे केसाळ, निष्ठावान पाळीव प्राणी आहेत जे विविध जातींमध्ये आढळतात. त्यांना खेळायला आवडते, पाळणे आवडते आणि ते त्यांच्या मैत्रीपूर्ण आणि प्रेमळ स्वभावासाठी ओळखले जातात.";
+    case 'deer':
+      return "हरीण हे सुंदर प्राणी आहेत ज्यात शिंग (पुरुषांमध्ये) आहेत जे जंगलात आणि कुरणात राहतात. ते गवत आणि पानांसारख्या वनस्पती खातात आणि त्यांच्या तीव्र श्रवणशक्तीसाठी ओळखले जातात.";
+
+    case 'donkey':
+      return "गाढवे हे त्यांच्या लांब कानांसाठी आणि राखाडी किंवा तपकिरी फरसाठी ओळखले जाणारे अनुकूल प्राणी आहेत. ते मजबूत आणि हुशार आहेत, बहुतेकदा जड ओझे वाहून नेण्यासाठी किंवा शेतात एकनिष्ठ साथीदार म्हणून वापरले जातात.";
+    case 'elephant':
+      return "हत्ती हे मोठे कान आणि लांब सोंडे असलेले सर्वात मोठे जमीनी प्राणी आहेत. ते त्यांच्या बुद्धिमत्तेसाठी, सामाजिक वर्तनासाठी आणि पाण्यावरील प्रेमासाठी ओळखले जातात.";
+    case 'fox':
+      return "कोल्हा हा एक हुशार आणि जुळवून घेणारा सस्तन प्राणी आहे ज्यामध्ये झुडूप असलेली शेपटी असते जी ती शिल्लक ठेवण्यासाठी वापरते. कोल्हे त्यांच्या केशरी किंवा लाल फरसाठी ओळखले जातात आणि जंगलात कुशल शिकारी आहेत.";
+    case 'giraffe':
+      return "जिराफ हे जगातील सर्वात उंच सस्तन प्राणी आहेत, त्यांच्याकडे लांब माने आणि विशिष्ट ठिपके असलेले कोट आहेत. ते त्यांच्या उंचीचा वापर झाडांच्या उंच पानांपर्यंत पोहोचण्यासाठी करतात आणि त्यांची निळी-काळी जीभ आहे.";
+    case 'goat':
+      return "शेळ्या हे अनुकूल प्राणी आहेत ज्यांना गवत आणि पाने खायला आवडतात. त्यांना शिंगे आहेत, दाढी आहे आणि ते 'बा' आवाज करतात";
+    case 'horse':
+      return "घोडे हे मजबूत आणि मैत्रीपूर्ण प्राणी आहेत जे शतकानुशतके मानवांना मदत करत आहेत. ते वेगवेगळ्या रंगात आणि आकारात येतात आणि त्यांना रुंद, मोकळ्या जागेत धावणे आणि खेळणे आवडते.";
+    case 'kangaroo':
+      return "कांगारू हे ऑस्ट्रेलियातील मार्सुपियल आहेत जे शक्तिशाली मागच्या पायांवर उडी मारण्यासाठी ओळखले जातात. ते त्यांच्या बाळांना जोयस म्हणतात, एका थैलीत घेऊन जातात आणि त्यांचे पालनपोषण करतात";
+    case 'leopard':
+      return "बिबट्या हे मोठ्या मांजरी आहेत ज्यात सोनेरी-पिवळ्या फर विशिष्ट काळ्या डाग आणि रोझेट्सने झाकलेले असतात. ते कुशल गिर्यारोहक आणि आफ्रिका आणि आशियातील विविध अधिवासांमध्ये आढळणारे शक्तिशाली शिकारी आहेत.";
+    case 'lion':
+      return "सिंह ही मोठी मांजरी आहेत जी प्राइड्स नावाच्या गटांमध्ये राहतात. 'जंगलाचा राजा' म्हणून ओळखले जाते त्यांच्याकडे भव्य माने आहेत आणि ते शक्तिशाली शिकारी आहेत.";
+    case 'mongoose':
+      return "मुंगूस हा एक लहान सस्तन प्राणी आहे जो मांजर आणि गिलहरी यांच्यातील मिश्रणासारखा दिसतो. त्याच्या चपळतेसाठी ओळखला जातो, तो त्याच्या मागच्या पायांवर उभा राहू शकतो आणि त्याला अन्न शोधण्यासाठी गंधाची तीव्र भावना असते.";
+    case 'monkey':
+      return "वानर हे लांब शेपट्या असलेले खेळकर सस्तन प्राणी आहेत जे झाडांमध्ये राहतात. त्यांना एका फांदीवरून दुसऱ्या फांदीवर डोलायला आवडते आणि फळे आणि काजू खाणे आवडते.";
+    case 'pig':
+      return "डुकरे हे हुशार शेतातील प्राणी आहेत जे थंड राहण्यासाठी चिखलात लोळण्याचा आनंद घेतात. त्यांना सुगंधित, वासाची तीव्र जाणीव असते आणि त्यांना डुकराचे मांस म्हणतात.";
+    case 'rhinoceros':
+      return "गेंडे हे मोठे, तृणभक्षी प्राणी आहेत ज्यांची त्वचा जाड असते आणि त्यांच्या नाकावर एक किंवा दोन शिंगे असतात. त्यांना थंड राहण्यासाठी आणि त्यांच्या त्वचेचे सूर्यापासून संरक्षण करण्यासाठी चिखलात लोळणे आवडते.";
+    case 'sheep':
+      return "मेंढ्या त्यांच्या लोकरीसाठी ओळखल्या जाणार्‍या फ्लफी प्राणी आहेत, ज्याचा वापर आरामदायक कपडे बनवण्यासाठी केला जातो. ते 'बा' म्हणतात आणि कळप नावाच्या गटात राहतात";
+    case 'squirrel':
+      return "गिलहरी हे झुडूपयुक्त शेपटी असलेले केसाळ प्राणी आहेत ज्यांना झाडांवर चढणे आणि काजू खाणे आवडते. ते त्यांच्या तीक्ष्ण पंजेचा वापर करून फांद्या पकडतात आणि हिवाळ्यासाठी अन्न 'बुरो' नावाच्या लपलेल्या ठिकाणी साठवतात";
+    case 'tiger':
+      return "वाघ हे विशिष्ट केशरी फर आणि काळ्या पट्ट्यांसह मोठ्या मांजरी आहेत. ते उत्कृष्ट शिकारी आहेत आणि इतर वाघांशी संवाद साधण्यासाठी मोठ्याने गर्जना करू शकतात";
+    case 'wolf':
+      return "लांडगे हे जंगली कुत्री आहेत जे त्यांच्या पॅकमध्ये टीमवर्कसाठी ओळखले जातात. त्यांना तीव्र संवेदना असतात, ज्यात तीक्ष्ण ऐकणे आणि वासाची तीव्र भावना असते.";
+    case 'yac':
+      return "याक हे हिमालयात आढळणारे केसाळ, उच्च-उंचीचे सस्तन प्राणी आहेत. त्यांना लांब शिंगे, जाड अंगरखे आहेत आणि बहुतेकदा लोक वाहतुकीसाठी आणि दूध आणि लोकरचा स्रोत म्हणून वापरतात.";
+    case 'zebra':
+      return "झेब्रा हे काळे आणि पांढरे पट्टे असलेले प्राणी आहेत जे आफ्रिकेत राहतात. ते त्यांच्या अनोख्या नमुन्यांसाठी ओळखले जातात आणि त्यांच्या पट्ट्या त्यांना छद्म करण्यात आणि भक्षकांपासून सुरक्षित राहण्यास मदत करतात.";
+    default:
+      return "याक हे हिमालयात आढळणारे केसाळ, उच्च-उंचीचे सस्तन प्राणी आहेत. त्यांना लांब शिंगे, जाड अंगरखे आहेत आणि बहुतेकदा लोक वाहतुकीसाठी आणि दूध आणि लोकरचा स्रोत म्हणून वापरतात.";
   }
 }
 

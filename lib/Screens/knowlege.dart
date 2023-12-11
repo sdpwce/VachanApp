@@ -11,7 +11,8 @@ import 'colors.dart';
 
 
 class KnowPage extends StatelessWidget {
-
+  const KnowPage({Key? key, required this.lang,}) : super(key: key);
+  final bool lang;
   @override
   Widget build(BuildContext context) {
     var cwidgth = MediaQuery.of(context).size.width;
@@ -40,7 +41,7 @@ class KnowPage extends StatelessWidget {
                                children: [
                                    InkWell(
                                      onTap: (){
-                                       Navigator.of(context).push(MaterialPageRoute(builder: (context) => Fruits()));
+                                       Navigator.of(context).push(MaterialPageRoute(builder: (context) => Fruits(lang: lang,)));
                                      },
                                      child: Container(
                                          width: cwidgth*0.45,
@@ -53,7 +54,7 @@ class KnowPage extends StatelessWidget {
                                              Row(
                                                mainAxisAlignment: MainAxisAlignment.end,
                                                children: [
-                                                 Text("Fruits", style: GoogleFonts.lacquer(
+                                                 Text(lang?"Fruits":"फळे", style: GoogleFonts.lacquer(
                                                    fontSize: cwidgth*0.09,
                                                    fontWeight: FontWeight.bold,
                                             //   color: Color.fromARGB(255, 23, 120, 128),
@@ -84,7 +85,7 @@ class KnowPage extends StatelessWidget {
                                    ),
                                  InkWell(
                                    onTap: (){
-                                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => ColorPage()));
+                                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => ColorPage(lang: lang,)));
                                    },
                                    child: Container(
                                      width: cwidgth*0.55,
@@ -98,7 +99,7 @@ class KnowPage extends StatelessWidget {
                                            mainAxisAlignment: MainAxisAlignment.end,
                                            children: [
 
-                                             Text("Colors", style: GoogleFonts.lacquer(
+                                             Text(lang?"Colors":"रंग", style: GoogleFonts.lacquer(
                                                fontSize: cwidgth*0.09,
                                                fontWeight: FontWeight.bold,
                                                //   color: Color.fromARGB(255, 23, 120, 128),
@@ -138,7 +139,7 @@ class KnowPage extends StatelessWidget {
                      children: [
                        InkWell(
                            onTap:(){
-                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => Animals()));
+                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => Animals(lang: lang,)));
                             },
                           child: Container(
                            width: cwidgth*0.38,
@@ -148,7 +149,7 @@ class KnowPage extends StatelessWidget {
                                  SizedBox(
                                      height:  cheight*0.46*0.02,
                                  ),
-                                 Text("Animals", style: GoogleFonts.lacquer(
+                                 Text(lang?"Animals":"प्राणी", style: GoogleFonts.lacquer(
                                    fontSize: cwidgth*0.09,
                                    fontWeight: FontWeight.bold,
                                    //   color: Color.fromARGB(255, 23, 120, 128),
@@ -196,7 +197,7 @@ class KnowPage extends StatelessWidget {
                                  SizedBox( height: cheight*0.46*0.05,),
                                  Row(  mainAxisAlignment: MainAxisAlignment.end,
                                    children: [
-                                     Text("Shapes", style: GoogleFonts.lacquer(
+                                     Text(lang?"Shapes":"आकार", style: GoogleFonts.lacquer(
                                        fontSize: cwidgth*0.09,
                                        fontWeight: FontWeight.bold,
                                        //   color: Color.fromARGB(255, 23, 120, 128),

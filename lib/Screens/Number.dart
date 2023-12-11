@@ -4,7 +4,8 @@ import 'package:vachanapp/widgets/AppBar.dart';
 import 'package:vachanapp/widgets/drop.dart';
 
 class Number extends StatelessWidget {
-
+  const Number({Key? key, required this.lang,}) : super(key: key);
+  final bool lang;
   @override
   Widget build(BuildContext context) {
     var Cwidgth = MediaQuery.of(context).size.height*0.38;
@@ -41,13 +42,13 @@ class Number extends StatelessWidget {
                                                     // color: Colors.cyanAccent,
                                                    child: Column(
                                                      mainAxisAlignment: MainAxisAlignment.end,
-                                                       children: [BigDrop(DropText: '1', three: false,)],
+                                                       children: [BigDrop(DropText: lang?'1':'१', three: false, lang: lang,)],
                                                    ),),
                                                   Container( width: MediaQuery.of(context).size.width*0.6*0.5,
                                                     // color: Colors.amber,
                                                     child: Column(
                                                       mainAxisAlignment: MainAxisAlignment.start,
-                                                      children: [Drop(DropText: '0')],
+                                                      children: [Drop(DropText: lang?'0':'0', lang: lang,)],
                                                     ),),
                                                 ],
                                             )),
@@ -56,7 +57,7 @@ class Number extends StatelessWidget {
                                             //color: Colors.deepPurpleAccent,
                                              child: Row(
                                                mainAxisAlignment: MainAxisAlignment.center, children: [ SizedBox(width: MediaQuery.of(context).size.width*0.5*0.1,),
-                                               SmallDrop(DropText: '2', four: false,)],
+                                               SmallDrop(DropText: lang?'2':'२', four: false, lang: lang,)],
                                              ),),
                                      ],
                                ),
@@ -79,7 +80,7 @@ class Number extends StatelessWidget {
                                            height: MediaQuery.of(context).size.height*0.4*0.45,
                                            child: Column(
                                               mainAxisAlignment: MainAxisAlignment.end,
-                                               children: [BigDrop(DropText: '3', three: true,)],
+                                               children: [BigDrop(DropText: lang?'3':'३', three: true,lang: lang,)],
                                            ),
                                          ),
                                          Container(
@@ -88,7 +89,7 @@ class Number extends StatelessWidget {
                                            height: MediaQuery.of(context).size.height*0.4*0.45,
                                            child: Column(
                                              mainAxisAlignment: MainAxisAlignment.start,
-                                             children: [SmallDrop(DropText: '4', four: true,)],
+                                             children: [SmallDrop(DropText: lang?'4':'४', four: true, lang: lang,)],
                                            ),
                                          )
                                        ],
@@ -107,13 +108,13 @@ class Number extends StatelessWidget {
                              children: [
                                   Container( width:MediaQuery.of(context).size.width*0.33 ,
                                     //color: Colors.black12,
-                                   child: Column( mainAxisAlignment: MainAxisAlignment.end, children: [ Drop(DropText: '5')],),),
+                                   child: Column( mainAxisAlignment: MainAxisAlignment.end, children: [ Drop(DropText: lang?'5':'५', lang: lang,)],),),
                                   Container( width :MediaQuery.of(context).size.width*0.33,
                                       //color: Colors.white,
-                                      child: Column( mainAxisAlignment: MainAxisAlignment.start, children: [ BigDrop(DropText: '6', three: false,)],)),
+                                      child: Column( mainAxisAlignment: MainAxisAlignment.start, children: [ BigDrop(DropText: lang?'6':'६', three: false, lang: lang,)],)),
                                   Container(width: MediaQuery.of(context).size.width*0.33,
                                       //color: Colors.black,
-                                      child: Column( mainAxisAlignment: MainAxisAlignment.end, children: [ SmallDrop(DropText: '7', four: false,)],)),
+                                      child: Column( mainAxisAlignment: MainAxisAlignment.end, children: [ SmallDrop(DropText: lang?'7':'७', four: false, lang: lang,)],)),
                              ],
                       ),
                   ),
@@ -136,13 +137,13 @@ class Number extends StatelessWidget {
                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                   children: [
                                                     SizedBox(height: MediaQuery.of(context).size.height*0.46*0.15,),
-                                                    SmallDrop(DropText: '9', four: false,)],
+                                                    SmallDrop(DropText: lang?'9':'९', four: false, lang: lang,)],
                                                 ),),
                                              Container(width: MediaQuery.of(context).size.width*0.5*0.5,
                                                //color: Colors.pink,
                                                child: Column(
                                                  mainAxisAlignment: MainAxisAlignment.start,
-                                                 children: [ Drop(DropText: '8')],
+                                                 children: [ Drop(DropText: lang?'8':'८', lang: lang,)],
                                                ),),
                                            ],
                                        ),),
@@ -152,7 +153,7 @@ class Number extends StatelessWidget {
                                           children: [
                                                     InkWell(
                                                     onTap: (){
-                                                Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  NumberDetail()));
+                                                Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  NumberDetail(lang: lang,)));
                                                 },
                                                 child:
                                               Stack(
@@ -168,7 +169,7 @@ class Number extends StatelessWidget {
                                                       padding: EdgeInsets.all(10),
                                                       // Adjust the background color and opacity
                                                       child: Text(
-                                                        "Learn",
+                                                        lang?"Learn":"शिका",
                                                         style: TextStyle(
                                                           color: Colors.black, // Text color
                                                           fontSize: Cheight*0.08,

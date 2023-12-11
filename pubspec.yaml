@@ -51,6 +51,7 @@ dev_dependencies:
   google_fonts:
   speech_to_text: ^6.3.0
   avatar_glow: ^2.0.2
+  flutter_launcher_icons:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
