@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:vachanapp/Screens/Auth_Page.dart';
-import 'package:vachanapp/stt.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 

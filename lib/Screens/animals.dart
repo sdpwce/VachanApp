@@ -115,19 +115,35 @@ class _ColorListState extends State<Animals> {
   void checkStrings() {
 
     int currentIndex = _pageController.page!.round();
-
-    if (_wordsSpoken.toLowerCase() == AnimalsNames[currentIndex].toLowerCase()) {
-      showResult('Correct', Colors.green);
-      one++;
-      if (one > 0) {
-        speak("correct");
+    if(lang == true){
+      if (_wordsSpoken.toLowerCase() == AnimalsNames[currentIndex].toLowerCase()) {
+        showResult('Correct', Colors.green);
+        one++;
+        if (one > 0) {
+          speak("correct");
+        }
+      } else {
+        one++;
+        showResult('Incorrect', Colors.red);
+        if (one == 10) {
+          speak("Incorrect");
+        }
       }
+    }
+    else{
+    if (_wordsSpoken.toLowerCase() ==  getMarathiName(AnimalsNames[currentIndex].toLowerCase())) {
+    showResult('बरोबर', Colors.green);
+    one++;
+    if (one > 0) {
+    speak("बरोबर");
+    }
     } else {
-      one++;
-      showResult('Incorrect', Colors.red);
-      if (one == 10) {
-        speak("Incorrect");
-      }
+    one++;
+    showResult('चुक ', Colors.red);
+    if (one == 10) {
+    speak("चुक");
+    }
+    }
     }
   }
 
@@ -313,7 +329,7 @@ class _ColorListState extends State<Animals> {
                         Container(
                         //  padding: EdgeInsets.all(16),
                           child: Text(
-                            _wordsSpoken,
+                            lang?_wordsSpoken:'',
                             style: TextStyle(
                               fontSize: cwidth*0.05,
                               fontWeight: FontWeight.w300,
@@ -343,6 +359,64 @@ class _ColorListState extends State<Animals> {
 
 }
 
+String  getMarathiName(String AnimalName){
+  switch (AnimalName) {
+    case 'bear':
+      return "";
+    case 'buffalo':
+      return "images/buffalo.jpg";
+    case 'camel':
+      return "images/camel.jpg";
+    case 'cat':
+      return "manzar";
+    case 'cow':
+      return "gay gay";
+    case 'deer':
+      return "harina";
+    case 'dog':
+      return "kutra";
+    case 'donkey':
+      return "gadhava";
+    case 'elephant':
+      return "hatti hatti";
+    case 'fox':
+      return "kolla";
+    case 'giraffe':
+      return "giraffe";
+    case 'goat':
+      return "bakri";
+    case 'horse':
+      return "ghoda";
+    case 'kangaroo':
+      return "kangaroo";
+    case 'leopard':
+      return "chitta";
+    case 'lion':
+      return "siha";
+    case 'mongoose':
+      return "mongoose";
+    case 'monkey':
+      return "makad";
+    case 'pig':
+      return "dukkar";
+    case 'rhinoceros':
+      return "ganda";
+    case 'sheep':
+      return "mehndi";
+    case 'squirrel':
+      return "gilhari";
+    case 'tiger':
+      return "wagah";
+    case 'wolf':
+      return "landga";
+    case 'yac':
+      return "yak yak";
+    case 'zebra':
+      return "zebra";
+    default:
+      return "zebra";
+  }
+}
 String getImage(String AnimalName) {
     switch (AnimalName.toLowerCase()) {
       case 'bear':

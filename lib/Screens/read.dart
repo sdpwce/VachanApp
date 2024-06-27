@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vachanapp/widgets/AppBar.dart';
 import 'package:vachanapp/widgets/Heading.dart';
 import 'package:vachanapp/Screens/Alphabate.dart';
+import 'package:vachanapp/Screens/Varnmala.dart';
 import 'package:vachanapp/Screens/Number.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -52,7 +53,7 @@ class ReadPage extends StatelessWidget {
                                 InkWell(
                                   onTap: (){ Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => Alphabate()),
+                                    MaterialPageRoute(builder: (context) => lang?Alphabate():Varnmala()),
                                   );},
                                   child: Container(
                                       width: cwidgth*0.55,

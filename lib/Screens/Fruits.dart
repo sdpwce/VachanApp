@@ -18,7 +18,7 @@ class Fruits extends StatefulWidget {
 }
 
 class _ColorListState extends State<Fruits> {
-   _ColorListState({Key? key, required this.lang,});
+  _ColorListState({Key? key, required this.lang,});
   final bool lang;
 
   final List<String> FruitsNames = ['apple', 'banana', 'cherry', 'chikoo', 'coconut', 'custard apple', 'grapes', 'guava', 'Jamun', 'orange', 'papaya', 'pineapple', 'pomegranate', 'strawberry', 'watermelon'];
@@ -111,20 +111,37 @@ class _ColorListState extends State<Fruits> {
   void checkStrings() {
 
     int currentIndex = _pageController.page!.round();
-
-    if (_wordsSpoken.toLowerCase() == FruitsNames[currentIndex].toLowerCase()) {
-      showResult('Correct', Colors.green);
-      one++;
-      if (one > 0) {
-        speak("correct");
-      }
-    } else {
-      one++;
-      showResult('Incorrect', Colors.red);
-      if (one == 10) {
-        speak("Incorrect");
+    if(lang == true){
+      if (_wordsSpoken.toLowerCase() == FruitsNames[currentIndex].toLowerCase()) {
+        showResult('Correct', Colors.green);
+        one++;
+        if (one > 0) {
+          speak("correct");
+        }
+      } else {
+        one++;
+        showResult('Incorrect', Colors.red);
+        if (one == 10) {
+          speak("Incorrect");
+        }
       }
     }
+    else{
+      if (_wordsSpoken.toLowerCase() ==  getMarathiName(FruitsNames[currentIndex]).toLowerCase()) {
+        showResult('बरोबर', Colors.green);
+        one++;
+        if (one > 0) {
+          speak("बरोबर");
+        }
+      } else {
+        one++;
+        showResult('चुक ', Colors.red);
+        if (one == 10) {
+          speak("चुक");
+        }
+      }
+    }
+
   }
 
   void showResult(String text, Color color) {
@@ -132,9 +149,9 @@ class _ColorListState extends State<Fruits> {
       resultText = text;
       resultColor = color;
       if(text == "Correct")
-         showTick = true;
+        showTick = true;
       if(text == "Correct")
-         isCorrect = true;
+        isCorrect = true;
       if(text == "Incorrect")
         showTick = true;
       if(text == "Incorrect")
@@ -200,123 +217,123 @@ class _ColorListState extends State<Fruits> {
                       width: MediaQuery.of(context).size.width,
                       child: Column(
                         children: [
-                           //  SizedBox(height: cheight*0.01,),
-                            Container(
-                                   height: cheight*0.08,
-                                 // color: Colors.white,
-                              child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                   children: [
-                                     InkWell(
-                                       onTap: (){
-                                         speak(lang?FruitsNames[index]:getName(FruitsNames[index]));
-                                       },
-                                       child: Text(lang?FruitsNames[index]:getName(FruitsNames[index]), style: GoogleFonts.lacquer(
-                                         fontSize: cwidth*0.09,
-                                         fontWeight: FontWeight.bold,
-                                           color: Color.fromARGB(
-                                               255, 252, 132, 186),
-                                       ),textAlign: TextAlign.center, ),
-                                     ),
-                                   ],
-                              ),
+                          //  SizedBox(height: cheight*0.01,),
+                          Container(
+                            height: cheight*0.08,
+                            // color: Colors.white,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                InkWell(
+                                  onTap: (){
+                                    speak(lang?FruitsNames[index]:getName(FruitsNames[index]));
+                                  },
+                                  child: Text(lang?FruitsNames[index]:getName(FruitsNames[index]), style: GoogleFonts.lacquer(
+                                    fontSize: cwidth*0.09,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(
+                                        255, 252, 132, 186),
+                                  ),textAlign: TextAlign.center, ),
+                                ),
+                              ],
                             ),
+                          ),
                           Container(
                             height: cheight*0.15,
-                           // color: Colors.pink,
+                            // color: Colors.pink,
                             child: Row(
-                               mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                    InkWell(
-                                      onTap: (){
-                                        speak(lang?FruitsNames[index]:getName(FruitsNames[index]));
-                                      },
-                                      child: Container(
-                                          width: cwidth*0.4,
-                                         //color: Colors.white,
-                                          child: Image.asset(getImage(FruitsNames[index])),
-                                      ),
-                                    )
-                                ],
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                InkWell(
+                                  onTap: (){
+                                    speak(lang?FruitsNames[index]:getName(FruitsNames[index]));
+                                  },
+                                  child: Container(
+                                    width: cwidth*0.4,
+                                    //color: Colors.white,
+                                    child: Image.asset(getImage(FruitsNames[index])),
+                                  ),
+                                )
+                              ],
                             ),
                           ),
                           Container(
                             height: cheight*0.35,
-                          //  color: Colors.black,
+                            //  color: Colors.black,
                             child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                     Container(width: cwidth*0.15,
-                                     child: Column(
-                                         mainAxisAlignment: MainAxisAlignment.center,
-                                         children: [
-                                             Container(
-                                                  color: Colors.grey,
-                                                   height: cheight*0.35*0.02,
-                                             )
-                                         ],
-                                     ),) ,
-                                      Container(width: cwidth*0.7,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(5.0), // Adjust the radius to control the curve.
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color: Colors.black38, // Shadow color
-                                              offset: Offset(0, 2), // Offset of the shadow
-                                              blurRadius: 4.0, // Spread of the shadow
-                                            ),
-                                          ],
-                                          color: Color.fromARGB(
-                                              255, 93, 172, 178)),
-                                        child: Column(
-                                              children: [
-                                                  Expanded(
-                                                    flex: 4,
-                                                    child: Container(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(width: cwidth*0.15,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        color: Colors.grey,
+                                        height: cheight*0.35*0.02,
+                                      )
+                                    ],
+                                  ),) ,
+                                Container(width: cwidth*0.7,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5.0), // Adjust the radius to control the curve.
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black38, // Shadow color
+                                          offset: Offset(0, 2), // Offset of the shadow
+                                          blurRadius: 4.0, // Spread of the shadow
+                                        ),
+                                      ],
+                                      color: Color.fromARGB(
+                                          255, 93, 172, 178)),
+                                  child: Column(
+                                    children: [
+                                      Expanded(
+                                        flex: 4,
+                                        child: Container(
 
-                                                        child: Padding(
-                                                          padding: EdgeInsets.all(cwidth*0.06),
-                                                          child: Text(lang?getInfo(FruitsNames[index]):getInfoM(FruitsNames[index]),
-                                                            style: TextStyle(fontSize: cwidth*0.06, color: Colors.white),textAlign: TextAlign.center,),
-                                                        )
-                                                    ),
-                                                  ),
-                                                   Expanded(
-                                                     flex: 1,
-                                                     child: Container(
-                                                       child: Row(
-                                                         mainAxisAlignment: MainAxisAlignment.end,
-                                                         children: [
-                                                           Column(
-                                                             children: [
-                                                               Button(ButtonText: lang?"Stop":"थांबा", onTap: _stopReading),
-                                                             ],
-                                                           ),
-                                                           SizedBox(width: lang?cwidth*0.05:cwidth*0.12,),
-                                                           Column(
-                                                             children: [
-                                                               Button(ButtonText: lang?"Listen":"ऐका", onTap:(){speak(lang?getInfo(FruitsNames[index]):getInfoM(FruitsNames[index]));}),
-                                                             ],
-                                                           ),
-                                                           SizedBox(width: cwidth*0.8*0.1,),
-                                                         ],
-                                                       ),
-                                                     ),
-                                                   )
-                                              ],
+                                            child: Padding(
+                                              padding: EdgeInsets.all(cwidth*0.06),
+                                              child: Text(lang?getInfo(FruitsNames[index]):getInfoM(FruitsNames[index]),
+                                                style: TextStyle(fontSize: cwidth*0.06, color: Colors.white),textAlign: TextAlign.center,),
+                                            )
                                         ),
                                       ),
-                                  Container(width: cwidth*0.15,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          color: Colors.grey,
-                                          height: cheight*0.35*0.02,
-                                        )
-                                      ],
-                                    ),),
-                                ],
+                                      Expanded(
+                                        flex: 1,
+                                        child: Container(
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.end,
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Button(ButtonText: lang?"Stop":"थांबा", onTap: _stopReading),
+                                                ],
+                                              ),
+                                              SizedBox(width: lang?cwidth*0.05:cwidth*0.12,),
+                                              Column(
+                                                children: [
+                                                  Button(ButtonText: lang?"Listen":"ऐका", onTap:(){speak(lang?getInfo(FruitsNames[index]):getInfoM(FruitsNames[index]));}),
+                                                ],
+                                              ),
+                                              SizedBox(width: cwidth*0.8*0.1,),
+                                            ],
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Container(width: cwidth*0.15,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        color: Colors.grey,
+                                        height: cheight*0.35*0.02,
+                                      )
+                                    ],
+                                  ),),
+                              ],
                             ),
                           ),
                           SizedBox(height: cheight*0.02,),
@@ -342,7 +359,7 @@ class _ColorListState extends State<Fruits> {
                           Container(
                             //  padding: EdgeInsets.all(16),
                             child: Text(
-                              _wordsSpoken,
+                              lang?_wordsSpoken:"",
                               style: TextStyle(
                                 fontSize: cwidth*0.05,
                                 fontWeight: FontWeight.w300,
@@ -377,6 +394,45 @@ class _ColorListState extends State<Fruits> {
     );
   }
 
+
+
+}
+
+String getMarathiName(String fruitName){
+  switch (fruitName.toLowerCase()) {
+    case 'apple':
+      return "safarchand";
+    case 'banana':
+      return "keli";
+    case 'watermelon':
+      return "tarbuj";
+    case 'pomegranate':
+      return "dymber";
+    case 'cherry':
+      return "cherry";
+    case 'strawberry':
+      return "strawberry";
+    case 'chikoo':
+      return "chiku";
+    case 'jamun':
+      return "jumbol";
+    case 'custard apple':
+      return "sitafal";
+    case 'pineapple':
+      return "ananas";
+    case 'coconut':
+      return "narayan";
+    case 'papaya':
+      return "papai";
+    case 'orange':
+      return "santra";
+    case 'grapes':
+      return "draksha";
+    case 'guava':
+      return "peru";
+    default:
+      return "fal";
+  }
 }
 
 String getImage(String AnimalName) {
@@ -495,7 +551,7 @@ String getInfoM(String AnimalName) {
   switch (AnimalName.toLowerCase()) {
     case 'apple':
       return "सफरचंद हे एक स्वादिष्ट फळ आहे जे लाल आणि हिरव्या अशा विविध रंगात येते. हे iPhones, iPads आणि Mac संगणक बनवणाऱ्या प्रसिद्ध कंपनीचे नाव देखील आहे.";
-      case 'banana':
+    case 'banana':
       return "केळी ही पिवळी फळे आहेत जी मोठ्या झाडांवर वाढतात. ते एक चवदार आणि निरोगी स्नॅक आहेत, पोटॅशियम समृद्ध आहेत, जे आपले हृदय आणि स्नायू मजबूत ठेवण्यास मदत करतात.";
     case 'watermelon':
       return "टरबूज हे एक रसाळ फळ आहे जे 92% पाणी आहे, हायड्रेटेड राहण्यासाठी योग्य आहे. त्याचा दोलायमान लाल रंग शक्तिशाली अँटिऑक्सिडंटपासून येतो, ज्यामुळे तो एक चवदार आणि आरोग्यदायी पदार्थ बनतो!";

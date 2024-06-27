@@ -106,25 +106,44 @@ class _DetailAlpha extends State<ColorDetail> {
   }
   int one = 0;
   void checkStrings() {
+    if(lang == true){
+      if ( _wordsSpoken.toLowerCase() == _words.toLowerCase()) {
+        showResult('Correct', Colors.green);
+        one++;
+        if(one > 0){
+          speak("correct");
+        }
 
-    if ( _wordsSpoken.toLowerCase() == _words.toLowerCase()) {
-      showResult('Correct', Colors.green);
-      one++;
-      if(one > 0){
-        speak("correct");
+      } else {
+        one++;
+        showResult('Incorrect', Colors.red);
+        if(one == 10){
+          speak("Incorrect");
+        }
+
       }
-
-    } else {
-      one++;
-      showResult('Incorrect', Colors.red);
-      if(one == 10){
-        speak("Incorrect");
-      }
-
     }
+    else{
+      if ( _wordsSpoken.toLowerCase() == getMarathiName(BoxText).toLowerCase()) {
+        showResult('बरोबर', Colors.green);
+        one++;
+        if (one > 0) {
+          speak("बरोबर");
+        }
+      } else {
+        one++;
+        showResult('चुक ', Colors.red);
+        if (one == 10) {
+          speak("चुक");
+        }
+      }
+    }
+
   }
 
-  void showResult(String text, Color color) {
+
+
+    void showResult(String text, Color color) {
     setState(() {
       resultText = text;
       resultColor = color;
@@ -519,7 +538,7 @@ class _DetailAlpha extends State<ColorDetail> {
                 Container(
                   padding: EdgeInsets.all(16),
                   child: Text(
-                    _wordsSpoken,
+                    lang?_wordsSpoken:"",
                     style: TextStyle(
                       fontSize:  Cwidgth*0.06,
                       fontWeight: FontWeight.w300,
@@ -544,4 +563,36 @@ class _DetailAlpha extends State<ColorDetail> {
   }
 }
 
+String getMarathiName(String name){
+  if(name == "लाल" ) // संत्री
+    return 'Lal Lal';
+  else if(name == "नारिंगी")
+    return 'Narangi';
+  else if(name == "पिवळा")
+    return 'Piwala';
+  else if(name == "त्वचेचा रंग")
+    return 'Tum acche se Rang';
+  else if(name == "पांढरा")
+    return 'pandhara';
+  else if(name == "गुलाबी")
+    return 'Gulabi';
+  else if(name == "जांभळा")
+    return 'jambhada';
+  else if(name == "निळा")
+    return 'Neeya Neeya';
+  else if (name == "आकाशी")
+    return 'aakashi';
+  else if(name == "पोपट हिरवा")
+    return 'Popat hirwa';
+  else if(name == "हिरवा")
+    return 'hirwa';
+  else if(name == "तपकिरी")
+    return 'tapkiri';
+  else if(name == "राखाडी")
+    return 'rakhadi';
+  else if(name == "काळा")
+    return 'Kala Kala';
+  else
+    return '';
+}
 

@@ -7,7 +7,6 @@ import 'package:vachanapp/Screens/read.dart';
 import '../Screens/Craft.dart';
 import '../Screens/NumberDetail.dart';
 import '../Screens/knowlege.dart';
-import '../stt.dart';
 
 
 class Window extends StatelessWidget {
