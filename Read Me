@@ -1,0 +1,8 @@
+extract_mfcc-MFCC Feature Extraction Function 
+o	MFCCs are extracted from audio files and saved as .npy files for each audio file, making them ready for future comparisons.
+
+dtw_distance-DTW Distance Calculation 
+
+
+compare_mfcc- Comparing MFCCs 
+o	When an input MFCC is provided, the DTW distance is calculated between the input and all other stored MFCC features, allowing us to find the closest match in terms of audio similarity.
