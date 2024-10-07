@@ -6,6 +6,13 @@ o	MFCCs are extracted from audio files and saved as .npy files for each audio fi
 
 dtw_distance-DTW Distance Calculation 
 
-
 compare_mfcc- Comparing MFCCs 
 o	When an input MFCC is provided, the DTW distance is calculated between the input and all other stored MFCC features, allowing us to find the closest match in terms of audio similarity.
+
+SVM- This file is useful for identifying similarity of voice signal with existing pronounciation.
+
+# Information of folders used
+Images- This folder contains images used while development of application.
+Backend-This folder contains different pronounciations of words, letters etc.
+ios and android- This folder contains apk files and related files required to run the app on ios and android platform.
+
